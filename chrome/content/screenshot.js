@@ -1,7 +1,7 @@
 
 RESScreenshot = {
 	
-	init: function() {
+	init: function(mustCenter) {
         // Clean dialog default buttons
         document.documentElement.getButton("accept").setAttribute("style", "display:none;");
         document.documentElement.getButton("cancel").setAttribute("style", "display:none;");
@@ -18,6 +18,12 @@ RESScreenshot = {
         destinationCtx.drawImage(existingCanvas, 0, 0, destinationCanvas.width, destinationCanvas.height);
         
         this.initializeDrawCanvas("#ff0000", destinationCanvas);
+        
+        if (mustCenter) {
+            var w = (screen.availWidth/2) - (newWidth/2);
+            var h = (screen.availHeight/2) - (newHeight/2);
+            window.moveTo(w,h);
+        }
 	},
     
     initializeDrawCanvas : function(fillColor, canvas) {
@@ -58,4 +64,4 @@ RESScreenshot = {
 
 }
 
-window.addEventListener("load", function () { RESScreenshot.init(); }, false);
+window.addEventListener("load", function () { RESScreenshot.init(true); }, false);
