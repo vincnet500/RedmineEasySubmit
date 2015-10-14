@@ -45,6 +45,6 @@
 	width: 160px;
 }
 
-#res-screenshotwin {
-   /* width: 1024px;*/
+#res-screenshotwin canvas {
+    cursor: crosshair;
 }

@@ -29,7 +29,7 @@
 			<button oncommand="window.close();">
 			  <description>&screenshot.cancel;</description>
 			</button>
-            <button oncommand="RESScreenshot.init();">
+            <button oncommand="RESScreenshot.init(false);">
 			  <description>&screenshot.reinitialize;</description>
 			</button>
 			<button oncommand="RESScreenshot.createTicket();">
