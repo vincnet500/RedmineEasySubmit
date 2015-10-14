@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+	<Description about="urn:mozilla:install-manifest">
+		<em:id>redmineeasysubmit@vincnet500.com</em:id>
+		<em:type>2</em:type>
+		<em:name>Redmine Easy Submit</em:name>
+		<em:version>0.3</em:version>
+		<em:creator>vincnet500</em:creator>
+        <em:description>Soumettez facilement un ticket dans Redmine</em:description>
+		<em:optionsURL>chrome://redmineeasysubmit/content/options.xul</em:optionsURL>
+		<em:unpack>true</em:unpack>
+		<em:targetApplication>
+			<Description>
+				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+				<em:minVersion>32.0</em:minVersion>
+				<em:maxVersion>34.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+	</Description>
+</RDF>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://redmineeasysubmit/skin/style.css" type="text/css"?>
+
+<!DOCTYPE prefwindow SYSTEM "chrome://redmineeasysubmit/locale/options.dtd">
+
+<prefwindow xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&preferences.title;" id="res-prefwin">
+	<prefpane id="res-prefpane">
+		
+		<preferences>
+			<preference id="res-serverName" name="extensions.redmineeasysubmit@vincnet500.com.serverName" type="string" />
+			<preference id="res-apiKey" name="extensions.redmineeasysubmit@vincnet500.com.apiKey" type="string" />
+		</preferences>
+		
+		<script type="application/javascript" src="chrome://redmineeasysubmit/content/options.js" />
+		
+		<box id="res-header">
+			<text value="Redmine Easy Submit" />
+		</box>
+		
+		<box orient="vertical">
+			<groupbox id="res-server">
+				<caption label="&preferences.servercaption;" />
+				<label control="serverName" value="&preferences.serverinput;"/>
+				<textbox id="serverName" preference="res-serverName" size="70" />
+			</groupbox>
+			<groupbox id="res-connection">
+				<caption label="&preferences.connectioncaption;" />
+				<label control="apiKey" value="&preferences.apikey;"/>
+				<textbox id="apiKey" preference="res-apiKey" defaultValue="" size="70" />
+				<button label="&preferences.whereismyapikey;" oncommand="window.open(document.getElementById('serverName').value + '/my/account');"/>
+			</groupbox>
+		</box>
+		
+	</prefpane>
+</prefwindow>

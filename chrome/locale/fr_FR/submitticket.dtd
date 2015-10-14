@@ -1,0 +1,12 @@
+<!ENTITY submitticket.title "Créer un nouveau ticket">
+<!ENTITY submitticket.projectcaption "Projet Redmine">
+<!ENTITY submitticket.projectinput "Sélectionnez le projet redmine concerné *">
+<!ENTITY submitticket.maindatacaption "Informations générales">
+<!ENTITY submitticket.ticketTitle "Titre *">
+<!ENTITY submitticket.ticketDescription "Description *">
+<!ENTITY submitticket.attachScreenshot "Attacher automatiquement une impression écran de l'onglet actif">
+<!ENTITY submitticket.tracker "Tracker *">
+<!ENTITY submitticket.priority "Priorité *">
+<!ENTITY submitticket.assignedTo "Assigné à">
+<!ENTITY submitticket.buttonClose "Annuler">
+<!ENTITY submitticket.buttonSubmit "Créer le ticket">

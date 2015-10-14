@@ -1,0 +1,5 @@
+<!ENTITY favorites.title "Favoris">
+<!ENTITY favorites.information "Note : cette configuration de vos favoris n'est utilisable que si vous avez préalablement configuré vos options de connexion.">
+<!ENTITY favorites.favoritescaption "Mes favoris :">
+<!ENTITY favorites.defaultproject "Mon projet favori">
+<!ENTITY favorites.defaulttracker "Mon tracker favori">

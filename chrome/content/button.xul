@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="chrome://redmineeasysubmit/skin/button.css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://redmineeasysubmit/locale/button.dtd">
+
+<overlay id="res-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<script type="application/javascript" src="chrome://redmineeasysubmit/content/button.js"/>
+	
+	<toolbarpalette id="BrowserToolbarPalette">
+		<toolbarbutton id="res-button" class="toolbarbutton-1" label="&button.redmineeasysubmit;" tooltiptext="&button.tooltip;" 
+		oncommand="RedmineEasySubmit.run(event);" context="res-context-menu">
+			<menupopup id="res-context-menu">
+				<menuitem label="&button.submitticket;" value="submitticket" />
+				<menuseparator/>
+				<menuitem label="&button.favorites;" value="favorites" />
+				<menuseparator/>
+				<menuitem label="&button.options;" value="options" />
+			</menupopup>
+		</toolbarbutton>
+	</toolbarpalette>
+
+</overlay>

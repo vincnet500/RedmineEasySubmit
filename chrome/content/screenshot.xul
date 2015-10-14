@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://redmineeasysubmit/skin/style.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://redmineeasysubmit/locale/screenshot.dtd">
+
+<prefwindow xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&screenshot.title;" id="res-screenshotwin">
+	<prefpane id="res-prefpane">
+		
+        <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
+		<script type="application/javascript" src="chrome://redmineeasysubmit/content/screenshot.js" />
+        
+        <box id="res-header">
+			<text value="Redmine Easy Submit" />
+		</box>
+		
+        <box id="res-subheader">
+			<description>
+			&screenshot.information;
+			</description>
+		</box>
+        
+        <html:canvas id="screenshotCanvasUpdate" />
+        
+        <box id="res-footer">
+		</box>
+        
+        <hbox align="right"> 
+			<button oncommand="window.close();">
+			  <description>&screenshot.cancel;</description>
+			</button>
+            <button oncommand="RESScreenshot.init();">
+			  <description>&screenshot.reinitialize;</description>
+			</button>
+			<button oncommand="RESScreenshot.createTicket();">
+			  <description>&screenshot.submitTicket;</description>
+			</button>
+		</hbox>
+		
+	</prefpane>
+</prefwindow>

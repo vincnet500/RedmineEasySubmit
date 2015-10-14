@@ -1,0 +1,5 @@
+<!ENTITY favorites.title "Favorites">
+<!ENTITY favorites.information "Note : favorites configuration is only available is your have previously configure your Redmine connection.">
+<!ENTITY favorites.favoritescaption "My favorites :">
+<!ENTITY favorites.defaultproject "My favorite project">
+<!ENTITY favorites.defaulttracker "My favorite tracker">

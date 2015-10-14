@@ -1,0 +1,6 @@
+<!ENTITY preferences.title "Options">
+<!ENTITY preferences.servercaption "Serveur Redmine">
+<!ENTITY preferences.serverinput "Adresse du serveur Redmine :">
+<!ENTITY preferences.connectioncaption "Connexion au serveur Redmine :">
+<!ENTITY preferences.apikey "Clé d'API Redmine :">
+<!ENTITY preferences.whereismyapikey "Où trouvez ma clé d'API ?">

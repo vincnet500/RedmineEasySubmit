@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://redmineeasysubmit/skin/style.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://redmineeasysubmit/locale/submitticket.dtd">
+
+<window xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&submitticket.title;" id="res-submitticket">
+	<vbox>
+		<preferences>
+			<preference id="res-projectName" name="extensions.redmineeasysubmit@vincnet500.com.projectName" type="string" />
+		</preferences>
+		<stringbundleset id="stringbundleset">
+			<stringbundle id="string-bundle" src="chrome://redmineeasysubmit/locale/submitticket.properties"/>
+		</stringbundleset>
+		
+		<script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
+		<script type="application/javascript" src="chrome://redmineeasysubmit/content/submitticket.js" />
+		
+		<box id="res-header">
+			<text value="Redmine Easy Submit" />
+		</box>
+        
+        <html:canvas id="screenshotCanvas" style="display:none;" />
+		
+		<box orient="vertical">
+			<groupbox id="res-project">
+				<caption label="&submitticket.projectcaption;" />
+				<label value="&submitticket.projectinput;"/>
+				<menulist onselect="RESSubmitTicket.loadProjectMembers();" >
+				  <menupopup id="projectName">
+				  </menupopup>
+				</menulist>
+			</groupbox>
+			<groupbox id="res-maindata">
+				<caption label="&submitticket.maindatacaption;" />
+				<label value="&submitticket.tracker;"/>
+				<menulist>
+				  <menupopup id="trackerName">
+				  </menupopup>
+				</menulist>
+				<label value="&submitticket.priority;"/>
+				<menulist>
+				  <menupopup id="priority">
+				  </menupopup>
+				</menulist>
+				<label value="&submitticket.assignedTo;"/>
+				<menulist>
+				  <menupopup id="assignedTo">
+				  </menupopup>
+				</menulist>
+				<label value="&submitticket.ticketTitle;"/>
+				<textbox id="title" size="100" />
+				<label value="&submitticket.ticketDescription;"/>
+				<textbox id="description" multiline="true" rows="5" />
+				<checkbox id="attachScreenshot" label="&submitticket.attachScreenshot;" checked="true"/>
+			</groupbox>
+		</box>
+		
+		<hbox align="right"> 
+			<button oncommand="window.close();">
+			  <description>&submitticket.buttonClose;</description>
+			</button>
+			<button oncommand="RESSubmitTicket.createTicket();">
+			  <description>&submitticket.buttonSubmit;</description>
+			</button>
+		</hbox>
+		
+		<box id="res-footer">
+		</box>
+	</vbox>
+</window>

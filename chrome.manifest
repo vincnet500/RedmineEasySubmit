@@ -1,0 +1,7 @@
+style chrome://global/content/customizeToolbar.xul chrome://redmineeasysubmit/skin/button.css
+overlay	chrome://browser/content/browser.xul chrome://redmineeasysubmit/content/button.xul
+
+content redmineeasysubmit chrome/content/
+skin redmineeasysubmit classic/1.0 chrome/skin/
+
+locale redmineeasysubmit fr_FR chrome/locale/fr_FR/

@@ -1,0 +1,1 @@
+pref('extensions.redmineeasysubmit@vincnet500.com.serverName', 'http://[YOURSERVERNAME]');

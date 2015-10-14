@@ -1,0 +1,6 @@
+<!ENTITY preferences.title "Options">
+<!ENTITY preferences.servercaption "Redmine Server">
+<!ENTITY preferences.serverinput "Redmine Server URL :">
+<!ENTITY preferences.connectioncaption "Redmine Server Connection :">
+<!ENTITY preferences.apikey "Redmine API Key :">
+<!ENTITY preferences.whereismyapikey "Where can I find my API Key ?">

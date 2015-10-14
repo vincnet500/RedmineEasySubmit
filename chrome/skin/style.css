@@ -1,0 +1,50 @@
+
+#res-prefpane, #res-submitticket-pane {
+	padding: 0;
+}
+
+#res-header {
+	padding: 10px 15px;
+	background-color: #FFFFFF;
+	background-image: url(chrome://redmineeasysubmit/skin/icon_16x16.png);
+	background-position: 10px 13px;
+	background-repeat: no-repeat;
+	border-bottom: 1px solid #b0bdcc;
+}
+
+#res-subheader {
+	padding: 5px 5px;
+	background-color: #FFFFFF;
+	background-position: 7px 13px;
+	background-repeat: no-repeat;
+	border-bottom: 1px solid #b0bdcc;
+}
+
+#res-footer {
+	padding: 10px 10px;
+}
+
+#res-header text {
+	padding: 0 0 0 18px;
+	font-size: 14px;
+}
+
+#res-wrapper {
+	padding: 5px 10px;
+}
+
+#res-wrapper caption {
+	padding: 0 2px;
+}
+
+#res-types {
+	width: 160px;
+}
+
+#res-notif {
+	width: 160px;
+}
+
+#res-screenshotwin {
+   /* width: 1024px;*/
+}

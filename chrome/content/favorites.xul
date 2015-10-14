@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://redmineeasysubmit/skin/style.css" type="text/css"?>
+
+<!DOCTYPE prefwindow SYSTEM "chrome://redmineeasysubmit/locale/favorites.dtd">
+
+<prefwindow xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&favorites.title;" id="res-favoritewin">
+	<prefpane id="res-prefpane">
+		
+		<preferences>
+			<preference id="res-defaultProjectName" name="extensions.redmineeasysubmit@vincnet500.com.defaultProjectName" type="string" />
+			<preference id="res-defaultTrackerName" name="extensions.redmineeasysubmit@vincnet500.com.defaultTrackerName" type="string" />
+		</preferences>
+		
+		<script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
+		<script type="application/javascript" src="chrome://redmineeasysubmit/content/favorites.js" />
+		
+		<box id="res-header">
+			<text value="Redmine Easy Submit" />
+		</box>
+		
+		<box id="res-subheader">
+			<description>
+			&favorites.information;
+			</description>
+		</box>
+		
+		<box orient="vertical">
+			<groupbox id="res-favorites">
+				<caption label="&favorites.favoritescaption;" />
+				<label value="&favorites.defaultproject;"/>
+				<menulist preference="res-defaultProjectName">
+				  <menupopup id="defaultProjectName">
+				  </menupopup>
+				</menulist>
+				<label value="&favorites.defaulttracker;"/>
+				<menulist preference="res-defaultTrackerName">
+				  <menupopup id="defaultTrackerName">
+				  </menupopup>
+				</menulist>
+			</groupbox>
+		</box>
+		
+	</prefpane>
+</prefwindow>
