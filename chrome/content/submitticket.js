@@ -24,7 +24,7 @@ RESSubmitTicket = {
 	loadProjectMembers : function() {
 		var selectedProjectId = RESSystem.getMenuPopupValue("projectName");
 		RESSystem.initCommonList("assignedTo", "projects/" + selectedProjectId + "/memberships.json", "memberships", 0, true, function(popup, elem)  {
-			popup.appendChild(RESSystem.createMenuItem(elem["id"], elem.user["name"]));
+			popup.appendChild(RESSystem.createMenuItem(elem.user["id"], elem.user["name"]));
 		});
 	},
 	
