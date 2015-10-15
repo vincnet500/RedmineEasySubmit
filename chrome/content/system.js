@@ -33,6 +33,19 @@ RESSystem = {
 		}
 		xhr.send(null);
 	},
+    
+    testConnection : function() {
+        var xhr = new XMLHttpRequest();
+		xhr.open("GET", RESSystem.getPref("serverName") + "/projects.json?key=" + RESSystem.getPref("apiKey") + "&limit=1&offset=0", true);
+		xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                if (xhr.status != 200) {
+                    alert(RESSystem.getTranslation("res-string-bundle", "connection.error.message"));
+                }
+            }
+        }
+        xhr.send(null);
+    },
 	
 	createMenuItem: function(aKey, aLabel) {
 		const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
