@@ -9,8 +9,8 @@
 		<preferences>
 			<preference id="res-projectName" name="extensions.redmineeasysubmit@vincnet500.com.projectName" type="string" />
 		</preferences>
-		<stringbundleset id="stringbundleset">
-			<stringbundle id="string-bundle" src="chrome://redmineeasysubmit/locale/submitticket.properties"/>
+		<stringbundleset id="RESStringbundleset">
+			<stringbundle id="res-string-bundle" src="chrome://redmineeasysubmit/locale/submitticket.properties"/>
 		</stringbundleset>
 		
 		<script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />

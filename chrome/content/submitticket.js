@@ -2,6 +2,8 @@
 RESSubmitTicket = {
 	
 	init: function() {
+        RESSystem.testConnection();
+        
 		RESSystem.initCommonList("projectName", "projects.json", "projects", 0, true, function(popup, elem)  {
 			popup.appendChild(RESSystem.createMenuItem(elem["id"], elem["name"]));
 		}, function() {
@@ -35,7 +37,7 @@ RESSubmitTicket = {
 		var description = RESSystem.getTextBoxValue("description");
 		
 		if ( (projectId == '') || (trackerId == '') || (title == '') || (description == '') || (priorityId == '') ) {
-			alert(RESSystem.getTranslation("string-bundle", "mandatory.data.missing"));
+			alert(RESSystem.getTranslation("res-string-bundle", "mandatory.data.missing"));
 			return;
 		}
 		
@@ -69,7 +71,7 @@ RESSubmitTicket = {
                     if (xhrUpload.readyState == 4) {
                         if (xhrUpload.status == 201) {
                             var jsonResponse = JSON.parse(xhrUpload.responseText);
-                            root.issue.description += "\n\n" + "_" + RESSystem.getTranslation("string-bundle", "screenshot.link.description") + " " + RESSystem.getCurrentBrowserUrl() + "_";
+                            root.issue.description += "\n\n" + "_" + RESSystem.getTranslation("res-string-bundle", "screenshot.link.description") + " " + RESSystem.getCurrentBrowserUrl() + "_";
                             RESSubmitTicket.submitTicket(root, jsonResponse.upload.token);
                         }
                     }
@@ -97,10 +99,10 @@ RESSubmitTicket = {
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4) {
 				if (xhr.status == 201) {
-					RESSystem.showAlert(RESSystem.getTranslation("string-bundle", "ticket.submit.success.title"), RESSystem.getTranslation("string-bundle", "ticket.submit.success.message"));
+					RESSystem.showAlert(RESSystem.getTranslation("res-string-bundle", "ticket.submit.success.title"), RESSystem.getTranslation("res-string-bundle", "ticket.submit.success.message"));
 					window.close();
 				}
-				else alert(RESSystem.getTranslation("string-bundle", "ticket.submit.error"));
+				else alert(RESSystem.getTranslation("res-string-bundle", "ticket.submit.error"));
 			}
 		}
 		xhr.send(JSON.stringify(root));
