@@ -23,6 +23,7 @@
         <vbox id="res-loading-panel">
             <html:div id="res-loading">
                 <div id="res-loading-text">&submitticket.loading;</div>
+                <div id="res-loading-overlay"></div>
             </html:div>
         </vbox>
         
