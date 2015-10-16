@@ -48,3 +48,19 @@
 #res-screenshotwin canvas {
     cursor: crosshair;
 }
+
+#res-loading {
+    position: fixed;
+    top: 40%;
+    left: 37%;
+    width: 150px;
+    height: 50px;
+    background-color: darkgrey;
+    border-radius: 5px;
+    display: none;
+}
+#res-loading-text {
+    position: absolute;
+    top:30%;
+    left:20%;
+}

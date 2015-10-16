@@ -151,6 +151,15 @@ RESSystem = {
 			title, message, false, '', null, ''
 		);
 	},
+    
+    showLoading: function(divID, show) {
+        if (show) {
+            document.getElementById(divID).style.display = 'block';
+        }
+        else {
+            document.getElementById(divID).style.display = 'none';   
+        }
+    },
 	
 	getTranslation: function(bundle, key) {
 		var stringsBundle = document.getElementById(bundle);

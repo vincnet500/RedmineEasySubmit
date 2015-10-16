@@ -10,3 +10,4 @@
 <!ENTITY submitticket.assignedTo "Assigné à">
 <!ENTITY submitticket.buttonClose "Annuler">
 <!ENTITY submitticket.buttonSubmit "Créer le ticket">
+<!ENTITY submitticket.loading "Veuillez patienter">

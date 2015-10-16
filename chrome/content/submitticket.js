@@ -62,6 +62,7 @@ RESSubmitTicket = {
             dataurl = parameters.dataurl;
             
             if (dataurl != '') {
+                RESSystem.showLoading('res-loading', true);
                 var base64data = dataurl.split(",");
                 var screenshotBlob = RESSystem.b64toBlob(base64data[1], "image/png");
                 var xhrUpload = new XMLHttpRequest();
@@ -85,7 +86,8 @@ RESSubmitTicket = {
 	},
 	
 	submitTicket : function(root, uploadToken) {
-		if (uploadToken != '') {
+        RESSystem.showLoading('res-loading', true);
+        if (uploadToken != '') {
 			root.issue.uploads = [];
 			var attachment = new Object();
 			attachment.token = uploadToken;
@@ -98,6 +100,7 @@ RESSubmitTicket = {
 		xhr.setRequestHeader("Content-Type", "application/json");
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4) {
+                RESSystem.showLoading('res-loading', false);
 				if (xhr.status == 201) {
 					RESSystem.showAlert(RESSystem.getTranslation("res-string-bundle", "ticket.submit.success.title"), RESSystem.getTranslation("res-string-bundle", "ticket.submit.success.message"));
 					window.close();

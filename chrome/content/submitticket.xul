@@ -20,6 +20,12 @@
 			<text value="Redmine Easy Submit" />
 		</box>
         
+        <vbox id="res-loading-panel">
+            <html:div id="res-loading">
+                <div id="res-loading-text">&submitticket.loading;</div>
+            </html:div>
+        </vbox>
+        
         <html:canvas id="screenshotCanvas" style="display:none;" />
 		
 		<box orient="vertical">
