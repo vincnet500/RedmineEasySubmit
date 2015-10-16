@@ -3,4 +3,4 @@
 <!ENTITY preferences.serverinput "Adresse du serveur Redmine :">
 <!ENTITY preferences.connectioncaption "Connexion au serveur Redmine :">
 <!ENTITY preferences.apikey "Clé d'API Redmine :">
-<!ENTITY preferences.whereismyapikey "Où trouvez ma clé d'API ?">
+<!ENTITY preferences.whereismyapikey "Où trouver ma clé d'API ?">
