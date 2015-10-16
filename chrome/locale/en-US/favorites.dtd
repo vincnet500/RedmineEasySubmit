@@ -3,3 +3,4 @@
 <!ENTITY favorites.favoritescaption "My favorites :">
 <!ENTITY favorites.defaultproject "My favorite project">
 <!ENTITY favorites.defaulttracker "My favorite tracker">
+<!ENTITY favorites.loading "Please loading">

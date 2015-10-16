@@ -18,6 +18,12 @@
 		<box id="res-header">
 			<text value="Redmine Easy Submit" />
 		</box>
+        
+        <vbox id="res-loading-panel">
+            <html:div id="res-loading">
+                <div id="res-loading-text">&favorites.loading;</div>
+            </html:div>
+        </vbox>
 		
 		<box id="res-subheader">
 			<description>

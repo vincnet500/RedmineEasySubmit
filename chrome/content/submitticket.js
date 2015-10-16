@@ -2,22 +2,34 @@
 RESSubmitTicket = {
 	
 	init: function() {
+        var loadingCount = 0;
+        RESSystem.showLoading('res-loading', true);
         RESSystem.testConnection();
-        
 		RESSystem.initCommonList("projectName", "projects.json", "projects", 0, true, function(popup, elem)  {
 			popup.appendChild(RESSystem.createMenuItem(elem["id"], elem["name"]));
 		}, function() {
 			document.getElementById("projectName").parentNode.value = RESSystem.getPref("defaultProjectName");
+            loadingCount++;
+            if (loadingCount == 3) {
+                RESSystem.showLoading('res-loading', false);
+            }
 		});
 		RESSystem.initCommonList("trackerName", "trackers.json", "trackers", 0, true, function(popup, elem)  {
 			popup.appendChild(RESSystem.createMenuItem(elem["id"], elem["name"]));
 		}, function() {
 			document.getElementById("trackerName").parentNode.value = RESSystem.getPref("defaultTrackerName");
+            loadingCount++;
+            if (loadingCount == 3) {
+                RESSystem.showLoading('res-loading', false);
+            }
 		});
         RESSystem.initCommonList("priority", "enumerations/issue_priorities.json", "issue_priorities", 0, true, function(popup, elem)  {
 			popup.appendChild(RESSystem.createMenuItem(elem["id"], elem["name"]));
 		}, function() {
-			
+			loadingCount++;
+            if (loadingCount == 3) {
+                RESSystem.showLoading('res-loading', false);
+            }
 		});
 	},
 	
