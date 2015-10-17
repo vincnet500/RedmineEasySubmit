@@ -4,4 +4,5 @@ overlay	chrome://browser/content/browser.xul chrome://redmineeasysubmit/content/
 content redmineeasysubmit chrome/content/
 skin redmineeasysubmit classic/1.0 chrome/skin/
 
-locale redmineeasysubmit fr_FR chrome/locale/fr_FR/
+locale redmineeasysubmit fr-FR chrome/locale/fr-FR/
+locale redmineeasysubmit en-US chrome/locale/en-US/

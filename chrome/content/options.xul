@@ -11,7 +11,11 @@
 			<preference id="res-serverName" name="extensions.redmineeasysubmit@vincnet500.com.serverName" type="string" />
 			<preference id="res-apiKey" name="extensions.redmineeasysubmit@vincnet500.com.apiKey" type="string" />
 		</preferences>
+        <stringbundleset id="RESStringbundleset">
+			<stringbundle id="res-string-bundle" src="chrome://redmineeasysubmit/locale/submitticket.properties"/>
+		</stringbundleset>
 		
+        <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
 		<script type="application/javascript" src="chrome://redmineeasysubmit/content/options.js" />
 		
 		<box id="res-header">
@@ -31,6 +35,12 @@
 				<button label="&preferences.whereismyapikey;" oncommand="window.open(document.getElementById('serverName').value + '/my/account');"/>
 			</groupbox>
 		</box>
+        
+         <hbox align="right"> 
+			<button oncommand="RESSystem.testConnection(document.getElementById('serverName').value, document.getElementById('apiKey').value, true);">
+			  <description>&preferences.testconnection;</description>
+			</button>
+		</hbox>
 		
 	</prefpane>
 </prefwindow>

@@ -4,7 +4,7 @@ RESSubmitTicket = {
 	init: function() {
         var loadingCount = 0;
         RESSystem.showLoading('res-loading', true);
-        RESSystem.testConnection();
+        RESSystem.testConnection('', '', false);
 		RESSystem.initCommonList("projectName", "projects.json", "projects", 0, true, function(popup, elem)  {
 			popup.appendChild(RESSystem.createMenuItem(elem["id"], elem["name"]));
 		}, function() {

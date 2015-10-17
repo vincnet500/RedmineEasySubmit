@@ -34,17 +34,35 @@ RESSystem = {
 		xhr.send(null);
 	},
     
-    testConnection : function() {
-        var xhr = new XMLHttpRequest();
-		xhr.open("GET", RESSystem.getPref("serverName") + "/projects.json?key=" + RESSystem.getPref("apiKey") + "&limit=1&offset=0", true);
-		xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4) {
-                if (xhr.status != 200) {
-                    alert(RESSystem.getTranslation("res-string-bundle", "connection.error.message"));
+    testConnection : function(serverName, apiKey, showAlertSuccess) {
+        if (serverName == '') {
+            serverName = RESSystem.getPref("serverName");
+        }
+        if (apiKey == '') {
+            apiKey = RESSystem.getPref("apiKey");
+        }
+        try {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", serverName + "/projects.json?key=" + apiKey + "&limit=1&offset=0", true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    if (xhr.status != 200) {
+                        alert(RESSystem.getTranslation("res-string-bundle", "connection.error.message"));
+                    }
+                    else {
+
+
+                        if (showAlertSuccess) {
+                            alert(RESSystem.getTranslation("res-string-bundle", "connection.success.message"));
+                        }
+                    }
                 }
             }
+            xhr.send(null);
         }
-        xhr.send(null);
+        catch (e) {
+            alert(RESSystem.getTranslation("res-string-bundle", "connection.error.message"));
+        }
     },
 	
 	createMenuItem: function(aKey, aLabel) {
@@ -141,7 +159,11 @@ RESSystem = {
 	getPref : function(pref) {
 		var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
 		var branch = prefs.getBranch("extensions.redmineeasysubmit@vincnet500.com.");
-		return branch.getCharPref(pref);
+        try {
+            return branch.getCharPref(pref);
+        }
+        catch (e) {}
+        return "";
 	},
 	
 	showAlert: function(title, message) {

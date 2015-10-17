@@ -4,3 +4,4 @@
 <!ENTITY preferences.connectioncaption "Redmine Server Connection :">
 <!ENTITY preferences.apikey "Redmine API Key :">
 <!ENTITY preferences.whereismyapikey "Where can I find my API Key ?">
+<!ENTITY preferences.testconnection "Redmine server connection test">

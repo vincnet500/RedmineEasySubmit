@@ -11,6 +11,9 @@
 			<preference id="res-defaultProjectName" name="extensions.redmineeasysubmit@vincnet500.com.defaultProjectName" type="string" />
 			<preference id="res-defaultTrackerName" name="extensions.redmineeasysubmit@vincnet500.com.defaultTrackerName" type="string" />
 		</preferences>
+        <stringbundleset id="RESStringbundleset">
+			<stringbundle id="res-string-bundle" src="chrome://redmineeasysubmit/locale/submitticket.properties"/>
+		</stringbundleset>
 		
 		<script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
 		<script type="application/javascript" src="chrome://redmineeasysubmit/content/favorites.js" />
