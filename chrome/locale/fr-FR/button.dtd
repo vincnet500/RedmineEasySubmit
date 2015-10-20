@@ -3,3 +3,6 @@
 <!ENTITY button.submitticket "Créer un nouveau ticket">
 <!ENTITY button.options "Options">
 <!ENTITY button.favorites "Favoris">
+<!ENTITY button.directaccess "Accès direct">
+<!ENTITY button.search "Rechercher">
+<!ENTITY button.searchFavoriteTicket "Dans mon projet favori">

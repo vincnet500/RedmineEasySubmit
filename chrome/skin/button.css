@@ -11,3 +11,26 @@
 toolbarpaletteitem[place="palette"] > #res-button {
 	list-style-image: url("chrome://redmineeasysubmit/skin/icon_32x32.png");
 }
+
+#direct-access-zone, #search-zone {
+    margin-left: 33px;
+}
+#direct-access-zone button, #search-zone button {
+    list-style-image: none;
+    min-width: 35px;
+}
+#direct-access-zone textbox {
+    width: 55px;
+    margin-left: 10px;
+    margin-right: 3px;
+}
+#search-zone textbox {
+    width: 125px;
+    margin-left: 10px;
+    margin-right: 3px;
+}
+#search-zone checkbox {
+    display: block;
+    list-style-image: none;
+}
+

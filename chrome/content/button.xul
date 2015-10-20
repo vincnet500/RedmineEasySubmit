@@ -3,16 +3,34 @@
 
 <!DOCTYPE overlay SYSTEM "chrome://redmineeasysubmit/locale/button.dtd">
 
-<overlay id="res-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<overlay id="res-overlay" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	
+    <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
 	<script type="application/javascript" src="chrome://redmineeasysubmit/content/button.js"/>
 	
-	<toolbarpalette id="BrowserToolbarPalette">
-		<toolbarbutton id="res-button" class="toolbarbutton-1" label="&button.redmineeasysubmit;" tooltiptext="&button.tooltip;" 
+    <toolbarpalette id="BrowserToolbarPalette">
+        <toolbarbutton id="res-button" class="toolbarbutton-1" label="&button.redmineeasysubmit;" tooltiptext="&button.tooltip;" 
 		oncommand="RedmineEasySubmit.run(event);" context="res-context-menu">
-			<menupopup id="res-context-menu">
+			<menupopup id="res-context-menu" ignorekeys="true">
 				<menuitem label="&button.submitticket;" value="submitticket" />
 				<menuseparator/>
+                <hbox id="direct-access-zone" align="center">
+                    <text value="&button.directaccess;" />
+                    <textbox value="#" id="direct-access-ticketid" disableKeyNavigation="true" onkeydown="if (event.keyCode == 13) document.getElementById('direct-access-validatebutton').click();" />
+                    <button id="direct-access-validatebutton" label="Ok" value="directaccess" onclick="RedmineEasySubmit.directAccess(document.getElementById('direct-access-ticketid').value);" /> 
+                </hbox>
+                <menuseparator/>
+                <hbox id="search-zone" align="center">
+                    <vbox align="center">
+                        <hbox align="center">
+                            <text value="&button.search;" />
+                            <textbox value="" id="search-content" disableKeyNavigation="true" onkeydown="if (event.keyCode == 13) document.getElementById('search-validatebutton').click();" />
+                            <button id="search-validatebutton" label="Ok" value="search" onclick="RedmineEasySubmit.search(document.getElementById('search-content').value, 'search-favorite-ticket');" />
+                        </hbox>
+                        <checkbox id="search-favorite-ticket" label="&button.searchFavoriteTicket;" value="searchfavoriteticket" checked="true"/>
+                    </vbox>
+                </hbox>
+                <menuseparator/>
 				<menuitem label="&button.favorites;" value="favorites" />
 				<menuseparator/>
 				<menuitem label="&button.options;" value="options" />

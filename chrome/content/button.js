@@ -44,7 +44,31 @@ RedmineEasySubmit = {
 		else if (a == 'submitticket') {
 			window.open('chrome://redmineeasysubmit/content/submitticket.xul', '', 'chrome,centerscreen');
 		}
-	}
+	},
+    
+    directAccess : function(ticketID) {
+        if (ticketID == '') {
+            return; 
+        }
+        if (ticketID.indexOf("#") === 0) {
+            ticketID = ticketID.substring(1);
+        }
+        window.open(RESSystem.getPref("serverName") + "/issues/" + ticketID);
+    },
+    
+    search : function(content, favoriteTicketCheckboxId) {
+        if (content == '') {
+            return; 
+        }
+        var favoriteTicketCheckboxId = RESSystem.getCheckBoxValue(favoriteTicketCheckboxId);
+        if (favoriteTicketCheckboxId) {
+            var defaultProject = RESSystem.getPref("defaultProjectName");
+            window.open(RESSystem.getPref("serverName") + "/projects/" + defaultProject + "search?q=" + content);
+        }
+        else {
+            window.open(RESSystem.getPref("serverName") + "/search?q=" + content);
+        }
+    }
 
 };
 
