@@ -26,14 +26,14 @@
 		</box>
         
         <hbox align="right"> 
-			<button oncommand="window.close();">
-			  <description>&screenshot.cancel;</description>
+			<button oncommand="RESScreenshot.createTicket();">
+			  <description>&screenshot.submitTicket;</description>
 			</button>
             <button oncommand="RESScreenshot.init(false);">
 			  <description>&screenshot.reinitialize;</description>
 			</button>
-			<button oncommand="RESScreenshot.createTicket();">
-			  <description>&screenshot.submitTicket;</description>
+            <button oncommand="window.close();">
+			  <description>&screenshot.cancel;</description>
 			</button>
 		</hbox>
 		

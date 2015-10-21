@@ -64,12 +64,12 @@
 		</box>
 		
 		<hbox align="right"> 
-			<button oncommand="window.close();">
-			  <description>&submitticket.buttonClose;</description>
-			</button>
 			<button oncommand="RESSubmitTicket.createTicket();">
 			  <description>&submitticket.buttonSubmit;</description>
 			</button>
+            <button oncommand="window.close();">
+			  <description>&submitticket.buttonClose;</description>
+			</button>			
 		</hbox>
 		
 		<box id="res-footer">
