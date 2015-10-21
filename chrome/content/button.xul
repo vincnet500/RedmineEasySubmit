@@ -27,7 +27,7 @@
                             <textbox value="" id="search-content" disableKeyNavigation="true" onkeydown="if (event.keyCode == 13) document.getElementById('search-validatebutton').click();" />
                             <button id="search-validatebutton" label="Ok" value="search" onclick="RedmineEasySubmit.search(document.getElementById('search-content').value, 'search-favorite-ticket');" />
                         </hbox>
-                        <checkbox id="search-favorite-ticket" label="&button.searchFavoriteTicket;" value="searchfavoriteticket" checked="true"/>
+                        <checkbox id="search-favorite-ticket" label="&button.searchFavoriteTicket;" value="searchfavoriteticket" checked="false"/>
                     </vbox>
                 </hbox>
                 <menuseparator/>

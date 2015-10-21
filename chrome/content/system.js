@@ -34,6 +34,19 @@ RESSystem = {
 		xhr.send(null);
 	},
     
+    getProjectName : function(projectId)  {
+        var xhr = new XMLHttpRequest();
+		xhr.open("GET", RESSystem.getPref("serverName") + "/projects/" + projectId + ".json?key=" + RESSystem.getPref("apiKey"), false);
+		xhr.send(null);
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                var jsonResponse = JSON.parse(xhr.responseText);
+                return jsonResponse.project["identifier"];
+            }
+        }
+        return null;
+    },
+    
     testConnection : function(serverName, apiKey, showAlertSuccess) {
         if (serverName == '') {
             serverName = RESSystem.getPref("serverName");

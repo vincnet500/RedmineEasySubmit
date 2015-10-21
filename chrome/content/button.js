@@ -63,7 +63,12 @@ RedmineEasySubmit = {
         var favoriteTicketCheckboxId = RESSystem.getCheckBoxValue(favoriteTicketCheckboxId);
         if (favoriteTicketCheckboxId) {
             var defaultProject = RESSystem.getPref("defaultProjectName");
-            window.open(RESSystem.getPref("serverName") + "/projects/" + defaultProject + "search?q=" + content);
+            if (defaultProject != '') {
+                window.open(RESSystem.getPref("serverName") + "/projects/" + RESSystem.getProjectName(defaultProject) + "/search?q=" + content);
+            }
+            else {
+                alert("No default project found in configuration.");
+            }
         }
         else {
             window.open(RESSystem.getPref("serverName") + "/search?q=" + content);
