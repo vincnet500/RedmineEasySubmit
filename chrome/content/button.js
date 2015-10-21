@@ -67,7 +67,7 @@ RedmineEasySubmit = {
                 window.open(RESSystem.getPref("serverName") + "/projects/" + RESSystem.getProjectName(defaultProject) + "/search?q=" + content);
             }
             else {
-                alert("No default project found in configuration.");
+                RESSystem.basicAlert("No default project found in configuration.");
             }
         }
         else {

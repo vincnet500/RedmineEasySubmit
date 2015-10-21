@@ -60,13 +60,13 @@ RESSystem = {
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     if (xhr.status != 200) {
-                        alert(RESSystem.getTranslation("res-string-bundle", "connection.error.message"));
+                        RESSystem.basicAlert(RESSystem.getTranslation("res-string-bundle", "connection.error.message"));
                     }
                     else {
 
 
                         if (showAlertSuccess) {
-                            alert(RESSystem.getTranslation("res-string-bundle", "connection.success.message"));
+                            RESSystem.basicAlert(RESSystem.getTranslation("res-string-bundle", "connection.success.message"));
                         }
                     }
                 }
@@ -74,7 +74,7 @@ RESSystem = {
             xhr.send(null);
         }
         catch (e) {
-            alert(RESSystem.getTranslation("res-string-bundle", "connection.error.message"));
+            RESSystem.basicAlert(RESSystem.getTranslation("res-string-bundle", "connection.error.message"));
         }
     },
 	
@@ -178,6 +178,12 @@ RESSystem = {
         catch (e) {}
         return "";
 	},
+    
+    basicAlert: function(message) {
+        var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
+              .getService(Components.interfaces.nsIPromptService);
+        prompts.alert(window, "Redmine Easy Submit", message);
+    },
 	
 	showAlert: function(title, message) {
 		var alertService = Components.classes["@mozilla.org/alerts-service;1"].getService(Components.interfaces.nsIAlertsService);

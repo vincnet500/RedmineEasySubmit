@@ -49,7 +49,7 @@ RESSubmitTicket = {
 		var description = RESSystem.getTextBoxValue("description");
 		
 		if ( (projectId == '') || (trackerId == '') || (title == '') || (description == '') || (priorityId == '') ) {
-			alert(RESSystem.getTranslation("res-string-bundle", "mandatory.data.missing"));
+			RESSystem.basicAlert(RESSystem.getTranslation("res-string-bundle", "mandatory.data.missing"));
 			return;
 		}
 		
@@ -117,7 +117,7 @@ RESSubmitTicket = {
 					RESSystem.showAlert(RESSystem.getTranslation("res-string-bundle", "ticket.submit.success.title"), RESSystem.getTranslation("res-string-bundle", "ticket.submit.success.message"));
 					window.close();
 				}
-				else alert(RESSystem.getTranslation("res-string-bundle", "ticket.submit.error"));
+				else RESSystem.basicAlert(RESSystem.getTranslation("res-string-bundle", "ticket.submit.error"));
 			}
 		}
 		xhr.send(JSON.stringify(root));
