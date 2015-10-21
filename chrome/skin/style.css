@@ -75,3 +75,9 @@
     opacity: 0.4;
     z-index: 10;
 }
+
+#wiki-help-link {
+    text-align: right;
+    color: #1A0DAB;
+    text-decoration: underline;
+}

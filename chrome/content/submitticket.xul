@@ -59,6 +59,7 @@
 				<textbox id="title" size="100" />
 				<label value="&submitticket.ticketDescription;"/>
 				<textbox id="description" multiline="true" rows="5" />
+                <description id="wiki-help-link"><html:a href="javascript:RESSubmitTicket.displayWikiHelp();">&submitticket.wikiHelpLink;</html:a></description>
 				<checkbox id="attachScreenshot" label="&submitticket.attachScreenshot;" checked="true"/>
 			</groupbox>
 		</box>

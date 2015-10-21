@@ -11,3 +11,4 @@
 <!ENTITY submitticket.buttonClose "Annuler">
 <!ENTITY submitticket.buttonSubmit "Créer le ticket">
 <!ENTITY submitticket.loading "Veuillez patienter">
+<!ENTITY submitticket.wikiHelpLink "Aide sur les syntaxes Wiki">

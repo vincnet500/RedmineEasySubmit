@@ -121,7 +121,11 @@ RESSubmitTicket = {
 			}
 		}
 		xhr.send(JSON.stringify(root));
-	}
+	},
+    
+    displayWikiHelp: function() {
+        window.open(RESSystem.getPref("serverName") + "/help/fr/wiki_syntax.html");   
+    }
 	
 }
 
