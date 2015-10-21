@@ -32,7 +32,7 @@
 				<caption label="&preferences.connectioncaption;" />
 				<label control="apiKey" value="&preferences.apikey;"/>
 				<textbox id="apiKey" preference="res-apiKey" defaultValue="" size="70" />
-				<button label="&preferences.whereismyapikey;" oncommand="window.open(document.getElementById('serverName').value + '/my/account');"/>
+				<button label="&preferences.whereismyapikey;" oncommand="RESOptions.navigateMyAccount(document.getElementById('serverName').value);"/>
 			</groupbox>
 		</box>
         
