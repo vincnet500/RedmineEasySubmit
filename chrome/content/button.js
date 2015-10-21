@@ -32,17 +32,20 @@ RedmineEasySubmit = {
 			if (a == '') a = 'default';
 		}
 		
-		if (a == 'default') {
-			window.open('chrome://redmineeasysubmit/content/submitticket.xul', '', 'chrome,centerscreen');
+		if ( (a == 'default') || (a == 'submitticket') ) {
+            var apiKey = RESSystem.getPref("apiKey");
+            if (apiKey != '') {
+                window.open('chrome://redmineeasysubmit/content/submitticket.xul', '', 'chrome,centerscreen');
+            }
+            else {
+			    window.open('chrome://redmineeasysubmit/content/options.xul', '', 'chrome,centerscreen');
+            }
 		}
 		else if (a == 'options') {
 			window.open('chrome://redmineeasysubmit/content/options.xul', '', 'chrome,centerscreen');
 		}
 		else if (a == 'favorites') {
 			window.open('chrome://redmineeasysubmit/content/favorites.xul', '', 'chrome,centerscreen');
-		}
-		else if (a == 'submitticket') {
-			window.open('chrome://redmineeasysubmit/content/submitticket.xul', '', 'chrome,centerscreen');
 		}
 	},
     

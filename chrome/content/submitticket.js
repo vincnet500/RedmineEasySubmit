@@ -41,7 +41,7 @@ RESSubmitTicket = {
 	},
 	
 	createTicket : function() {
-		var projectId = RESSystem.getMenuPopupValue("projectName");
+        var projectId = RESSystem.getMenuPopupValue("projectName");
 		var trackerId = RESSystem.getMenuPopupValue("trackerName");
 		var priorityId = RESSystem.getMenuPopupValue("priority");
 		var assignedTo = RESSystem.getMenuPopupValue("assignedTo");
