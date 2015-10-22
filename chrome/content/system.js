@@ -205,7 +205,17 @@ RESSystem = {
 	getTranslation: function(bundle, key) {
 		var stringsBundle = document.getElementById(bundle);
 		return stringsBundle.getString(key);
-	}
+	},
+    
+    getCurrentShortLocale : function() {
+        var chromeREgistryService = Components.classes["@mozilla.org/chrome/chrome-registry;1"]
+            .getService(Components.interfaces.nsIXULChromeRegistry);
+        var language = chromeREgistryService.getSelectedLocale("global");
+        if (language.indexOf("-") > -1) {
+            language = language.substring(0, language.indexOf("-"));
+        }
+        return language;
+    }
 	
 }
 

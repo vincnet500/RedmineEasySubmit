@@ -124,7 +124,9 @@ RESSubmitTicket = {
 	},
     
     displayWikiHelp: function() {
-        window.open(RESSystem.getPref("serverName") + "/help/fr/wiki_syntax.html");   
+        var language = RESSystem.getCurrentShortLocale();
+        console.error(language);
+        window.open(RESSystem.getPref("serverName") + "/help/" + language + "/wiki_syntax.html");   
     }
 	
 }
