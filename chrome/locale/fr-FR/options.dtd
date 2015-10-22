@@ -5,3 +5,4 @@
 <!ENTITY preferences.apikey "Clé d'API Redmine :">
 <!ENTITY preferences.whereismyapikey "Où trouver ma clé d'API ?">
 <!ENTITY preferences.testconnection "Tester la connexion au serveur Redmine">
+<!ENTITY preferences.loading "Veuillez patienter">
