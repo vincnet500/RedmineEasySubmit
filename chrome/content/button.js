@@ -47,6 +47,9 @@ RedmineEasySubmit = {
 		else if (a == 'favorites') {
 			window.open('chrome://redmineeasysubmit/content/favorites.xul', '', 'chrome,centerscreen');
 		}
+        else if (a == 'mydiscussions') {
+			window.open('chrome://redmineeasysubmit/content/mydiscussions.xul', '', 'chrome,centerscreen');
+		}
 	},
     
     directAccess : function(ticketID) {

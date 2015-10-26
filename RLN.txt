@@ -1,0 +1,3 @@
++ New test connection button
++ Improve loading message integration
++ Fix problem with english locale

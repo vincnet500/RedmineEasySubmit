@@ -13,7 +13,11 @@
 		oncommand="RedmineEasySubmit.run(event);" context="res-context-menu">
 			<menupopup id="res-context-menu" ignorekeys="true">
 				<menuitem label="&button.submitticket;" value="submitticket" />
-				<menuseparator/>
+                <menuseparator/>
+                <menuitem label="&button.mysubmited;" value="mysubmited" />
+				<menuitem label="&button.myassigned;" value="myassigned" />
+                <menuitem label="&button.mydiscussions;" value="mydiscussions" />
+                <menuseparator/>
                 <hbox id="direct-access-zone" align="center">
                     <text value="&button.directaccess;" />
                     <textbox value="#" id="direct-access-ticketid" disableKeyNavigation="true" onkeydown="if (event.keyCode == 13) document.getElementById('direct-access-validatebutton').click();" />

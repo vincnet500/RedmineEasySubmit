@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://redmineeasysubmit/skin/style.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://redmineeasysubmit/locale/mydiscussions.dtd">
+
+<window xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&mydiscussions.title;" id="res-mydiscussions">
+	<vbox>
+        <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
+		<script type="application/javascript" src="chrome://redmineeasysubmit/content/mydiscussions.js" />
+        
+        <box id="res-header">
+			<text value="Redmine Easy Submit" />
+		</box>
+		
+        <box id="res-subheader">
+			<description id="">
+			</description>
+		</box>
+        
+        <vbox id="res-loading-panel">
+            <html:div id="res-loading">
+                <div id="res-loading-text">&mydiscussions.loading;</div>
+                <div id="res-loading-overlay"></div>
+            </html:div>
+        </vbox>
+        
+        <box orient="vertical">
+			<groupbox>
+				<label value="&mydiscussions.project;"/>
+				<menulist onselect="RESDiscussions.loadDiscussions();">
+				  <menupopup id="projectName">
+				  </menupopup>
+                </menulist>
+            </groupbox>
+        </box>
+        
+        <hbox align="right"> 
+            <button oncommand="window.close();">
+			  <description>&mydiscussions.close;</description>
+			</button>
+		</hbox>
+	</vbox>
+</window>

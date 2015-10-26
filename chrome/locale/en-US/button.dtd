@@ -6,3 +6,6 @@
 <!ENTITY button.directaccess "Direct Access">
 <!ENTITY button.search "Search">
 <!ENTITY button.searchFavoriteTicket "Search on my favorite project">
+<!ENTITY button.mysubmited "My created tickets">
+<!ENTITY button.myassigned "My assigned tickets">
+<!ENTITY button.mydiscussions "My current talks">

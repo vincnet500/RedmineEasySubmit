@@ -50,6 +50,9 @@
 				</menulist>
 			</groupbox>
 		</box>
+        
+        <box id="res-footer">
+		</box>
 		
 	</prefpane>
 </prefwindow>

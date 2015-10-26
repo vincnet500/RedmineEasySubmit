@@ -47,6 +47,19 @@ RESSystem = {
         return null;
     },
     
+    getCurrentUserAttribute : function(attributeName) {
+        var xhr = new XMLHttpRequest();
+		xhr.open("GET", RESSystem.getPref("serverName") + "/users/current.json?key=" + RESSystem.getPref("apiKey"), false);
+		xhr.send(null);
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                var jsonResponse = JSON.parse(xhr.responseText);
+                return jsonResponse.user["id"];
+            }
+        }
+        return null;
+    },
+    
     testConnection : function(serverName, apiKey, showAlertSuccess) {
         if (serverName == '') {
             serverName = RESSystem.getPref("serverName");
