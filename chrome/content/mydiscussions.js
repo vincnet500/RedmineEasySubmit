@@ -13,10 +13,40 @@ RESDiscussions = {
 	},
     
     loadDiscussions : function() {
+        RESSystem.showLoading('res-loading', true);
+        
         var currentUserId = RESSystem.getCurrentUserAttribute("id");
         var projectId = RESSystem.getMenuPopupValue("projectName"); 
         var tickets = this.loadOpenTickets(projectId, currentUserId);
-        console.error(tickets);
+        
+        for (var key in tickets) {
+            var ticket = tickets[key];
+            var className = "";
+            var allJournals = ticket.issue.journals;
+            if (allJournals[allJournals.length - 1].user["id"] != currentUserId) {
+                className = "cell-highlighted";
+            }
+            var updatedOnDate = new Date(ticket.issue["updated_on"]).toLocaleFormat('%d-%b-%Y');
+            var subject = ticket.issue["subject"];
+            RESSystem.appendListBox("ticketsTable", className, ["#" + ticket.issue["id"], (subject.length > 75?subject.substring(0, 72) + "...":subject), ticket.issue.status["name"], ticket.issue.priority["name"], ticket.issue.tracker["name"], updatedOnDate]);
+        }
+        
+        var listBox = document.getElementById("ticketsTable");
+        listBox.addEventListener("dblclick", function(event) {
+            var target = event.target;
+            while (target && target.localName != "listitem") {
+                target = target.parentNode;
+            }
+            if (!target) {
+                return;
+            }
+
+            console.error(target);
+            parameters = new Object();
+			openDialog("chrome://redmineeasysubmit/content/mydiscussionscontent.xul", "dlg", "modal,chrome,centerscreen", target.getAttribute("value"), parameters);
+        }, false);
+        
+        RESSystem.showLoading('res-loading', false);
     },
     
     loadOpenTickets : function(project, currentUserId) {

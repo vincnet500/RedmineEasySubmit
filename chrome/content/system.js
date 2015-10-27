@@ -34,6 +34,22 @@ RESSystem = {
 		xhr.send(null);
 	},
     
+    appendListBox : function(listname, className, values) {
+        const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+        var listBox = document.getElementById(listname);
+        var listItem = document.createElementNS(XUL_NS, "listitem");
+        listItem.setAttribute("value", values[0]);
+        for (var key in values) {
+            var listCell = document.createElementNS(XUL_NS, "listcell");
+            listCell.setAttribute("label", values[key]);
+            if (className != '') {
+                listCell.setAttribute("class", className);
+            }
+            listItem.appendChild(listCell);
+        }
+        listBox.appendChild(listItem);
+    },
+    
     getProjectName : function(projectId)  {
         var xhr = new XMLHttpRequest();
 		xhr.open("GET", RESSystem.getPref("serverName") + "/projects/" + projectId + ".json?key=" + RESSystem.getPref("apiKey"), false);

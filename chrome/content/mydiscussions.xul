@@ -14,7 +14,8 @@
 		</box>
 		
         <box id="res-subheader">
-			<description id="">
+			<description>
+                &mydiscussions.information;
 			</description>
 		</box>
         
@@ -33,6 +34,18 @@
 				  </menupopup>
                 </menulist>
             </groupbox>
+            <groupbox>
+                <listbox id="ticketsTable">
+                  <listhead>
+                    <listheader label="&mydiscussions.ticketId;" width="100" />
+                    <listheader label="&mydiscussions.ticketTitle;" width="450" />
+                    <listheader label="&mydiscussions.ticketStatus;" width="108" />
+                    <listheader label="&mydiscussions.ticketPriority;" width="108" />
+                    <listheader label="&mydiscussions.ticketTracker;" width="108" />
+                    <listheader label="&mydiscussions.ticketLastAnswerDate;" width="150" />
+                  </listhead>
+                </listbox>
+            </groupbox>
         </box>
         
         <hbox align="right"> 
@@ -40,5 +53,8 @@
 			  <description>&mydiscussions.close;</description>
 			</button>
 		</hbox>
+        
+        <box id="res-footer">
+		</box>
 	</vbox>
 </window>

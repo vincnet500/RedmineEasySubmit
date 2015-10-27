@@ -2,3 +2,10 @@
 <!ENTITY mydiscussions.close "Close">
 <!ENTITY mydiscussions.project "Project">
 <!ENTITY mydiscussions.loading "Please Loading">
+<!ENTITY mydiscussions.ticketId "ID">
+<!ENTITY mydiscussions.ticketTitle "Title">
+<!ENTITY mydiscussions.ticketStatus "Status">
+<!ENTITY mydiscussions.ticketPriority "Priority">
+<!ENTITY mydiscussions.ticketTracker "Tracker">
+<!ENTITY mydiscussions.ticketLastAnswerDate "Last answer">
+<!ENTITY mydiscussions.information "Here you find list of tickets on which you submitted comments. Tickets for which last answer is not yours are highlited is bold.">

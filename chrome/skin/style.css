@@ -81,3 +81,13 @@
     color: #1A0DAB;
     text-decoration: underline;
 }
+
+#res-mydiscussions {
+    width: 1024px;
+}
+#ticketsTable {
+    height: 400px;   
+}
+.cell-highlighted {
+    font-weight: bold;
+}

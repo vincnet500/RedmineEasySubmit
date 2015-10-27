@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://redmineeasysubmit/skin/style.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://redmineeasysubmit/locale/mydiscussionscontent.dtd">
+
+<prefwindow xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&mydiscussionscontent.title;" id="res-mydiscussionscontent">
+	<prefpane id="res-prefpane">
+		
+        <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
+        
+        <box id="res-header">
+			<text value="Redmine Easy Submit" />
+		</box>
+		
+        <box id="res-footer">
+		</box>
+        
+        <hbox align="right"> 
+			
+		</hbox>
+		
+	</prefpane>
+</prefwindow>
