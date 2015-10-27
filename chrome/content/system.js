@@ -50,6 +50,19 @@ RESSystem = {
         listBox.appendChild(listItem);
     },
     
+    //TODO Bug here
+    cleanListBox : function(listname) {
+        var listBox = document.getElementById(listname);
+        var allChildNodes = listBox.childNodes;
+        for (var key in allChildNodes) {
+            if (typeof(allChildNodes[key]) != "undefined") {
+                if (allChildNodes[key].nodeName == 'listitem') {
+                    listBox.removeChild(allChildNodes[key]);   
+                }
+            }
+        }
+    },
+    
     getProjectName : function(projectId)  {
         var xhr = new XMLHttpRequest();
 		xhr.open("GET", RESSystem.getPref("serverName") + "/projects/" + projectId + ".json?key=" + RESSystem.getPref("apiKey"), false);

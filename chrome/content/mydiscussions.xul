@@ -52,6 +52,9 @@
             <button oncommand="window.close();">
 			  <description>&mydiscussions.close;</description>
 			</button>
+            <button oncommand="RESSystem.cleanListBox('ticketsTable');">
+			  <description>test</description>
+			</button>
 		</hbox>
         
         <box id="res-footer">

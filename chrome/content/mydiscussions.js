@@ -10,10 +10,25 @@ RESDiscussions = {
 			document.getElementById("projectName").parentNode.value = RESSystem.getPref("defaultProjectName");
             RESSystem.showLoading('res-loading', false);
 		});
+        
+        var listBox = document.getElementById("ticketsTable");
+        listBox.addEventListener("dblclick", function(event) {
+            var target = event.target;
+            while (target && target.localName != "listitem") {
+                target = target.parentNode;
+            }
+            if (!target) {
+                return;
+            }
+            parameters = new Object();
+			openDialog("chrome://redmineeasysubmit/content/mydiscussionscontent.xul", "dlg", "modal,chrome,centerscreen", target.getAttribute("value"), parameters);
+        }, false);
 	},
     
     loadDiscussions : function() {
         RESSystem.showLoading('res-loading', true);
+        
+        RESSystem.cleanListBox("ticketsTable");
         
         var currentUserId = RESSystem.getCurrentUserAttribute("id");
         var projectId = RESSystem.getMenuPopupValue("projectName"); 
@@ -31,24 +46,10 @@ RESDiscussions = {
             RESSystem.appendListBox("ticketsTable", className, ["#" + ticket.issue["id"], (subject.length > 75?subject.substring(0, 72) + "...":subject), ticket.issue.status["name"], ticket.issue.priority["name"], ticket.issue.tracker["name"], updatedOnDate]);
         }
         
-        var listBox = document.getElementById("ticketsTable");
-        listBox.addEventListener("dblclick", function(event) {
-            var target = event.target;
-            while (target && target.localName != "listitem") {
-                target = target.parentNode;
-            }
-            if (!target) {
-                return;
-            }
-
-            console.error(target);
-            parameters = new Object();
-			openDialog("chrome://redmineeasysubmit/content/mydiscussionscontent.xul", "dlg", "modal,chrome,centerscreen", target.getAttribute("value"), parameters);
-        }, false);
-        
         RESSystem.showLoading('res-loading', false);
     },
     
+    // TODO gérer la récursivité (offset/limit)
     loadOpenTickets : function(project, currentUserId) {
         var myDiscussionTickets = [];
         var xhr = new XMLHttpRequest();
@@ -69,6 +70,7 @@ RESDiscussions = {
                             for (var key in allJournals) {
                                 if (allJournals[key].user["id"] == currentUserId) {
                                     myDiscussionTickets.push(jsonSubResponse);
+                                    break;
                                 }
                             }
                         }

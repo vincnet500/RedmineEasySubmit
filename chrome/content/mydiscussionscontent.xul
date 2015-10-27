@@ -8,10 +8,17 @@
 	<prefpane id="res-prefpane">
 		
         <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
+        <script type="application/javascript" src="chrome://redmineeasysubmit/content/mydiscussionscontent.js" />
         
         <box id="res-header">
 			<text value="Redmine Easy Submit" />
 		</box>
+        
+        <box orient="vertical">
+			<groupbox>
+                  
+            </groupbox>
+        </box>
 		
         <box id="res-footer">
 		</box>
