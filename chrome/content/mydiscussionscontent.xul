@@ -16,7 +16,8 @@
         
         <box orient="vertical">
 			<groupbox>
-                  
+                <label value="&mydiscussionscontent.noteDescription;"/>
+				<textbox id="newNote" multiline="true" rows="3" />
             </groupbox>
         </box>
 		
@@ -24,7 +25,12 @@
 		</box>
         
         <hbox align="right"> 
-			
+			<button oncommand="RESDiscussionsContent.submitNote(document.getElementById('newNote').value);">
+              <description>&mydiscussionscontent.buttonSubmit;</description>
+            </button>
+            <button oncommand="window.close();">
+              <description>&mydiscussionscontent.buttonClose;</description>
+            </button>
 		</hbox>
 		
 	</prefpane>

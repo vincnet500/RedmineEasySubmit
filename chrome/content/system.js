@@ -50,17 +50,15 @@ RESSystem = {
         listBox.appendChild(listItem);
     },
     
-    //TODO Bug here
     cleanListBox : function(listname) {
         var listBox = document.getElementById(listname);
         var allChildNodes = listBox.childNodes;
-        for (var key in allChildNodes) {
-            if (typeof(allChildNodes[key]) != "undefined") {
-                if (allChildNodes[key].nodeName == 'listitem') {
-                    listBox.removeChild(allChildNodes[key]);   
-                }
-            }
+        var allChildNodesLength = allChildNodes.length;
+        var headNode = listBox.firstChild;
+        while (listBox.firstChild) {
+            listBox.removeChild(listBox.firstChild);
         }
+        listBox.appendChild(headNode);
     },
     
     getProjectName : function(projectId)  {

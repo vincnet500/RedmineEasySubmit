@@ -1,1 +1,4 @@
 <!ENTITY mydiscussionscontent.title "Contenu de la discussion">
+<!ENTITY mydiscussionscontent.noteDescription "Nouveau message">
+<!ENTITY mydiscussionscontent.buttonSubmit "Envoyer">
+<!ENTITY mydiscussionscontent.buttonClose "Fermer">
