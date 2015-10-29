@@ -50,6 +50,9 @@ RedmineEasySubmit = {
         else if (a == 'mydiscussions') {
 			window.open('chrome://redmineeasysubmit/content/mydiscussions.xul', '', 'chrome,centerscreen');
 		}
+        else if (a == 'about') {
+			window.open('chrome://redmineeasysubmit/content/about.xul', '', 'chrome,centerscreen');
+		}
 	},
     
     directAccess : function(ticketID) {

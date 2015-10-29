@@ -1,5 +1,5 @@
 
-RESDiscussionsContent = {
+RESAbout = {
 	
 	init: function(mustCenter) {
         // Clean dialog default buttons
@@ -11,14 +11,8 @@ RESDiscussionsContent = {
             var h = (screen.availHeight/2) - (newHeight/2);
             window.moveTo(w,h);
         }
-        
-		console.error(window.arguments[0]);
-	},
+	}
     
-    submitNote : function(message) {
-        alert(message);
-    }
-
 }
 
-window.addEventListener("load", function () { RESDiscussionsContent.init(true); }, false);
+window.addEventListener("load", function () { RESAbout.init(true); }, false);

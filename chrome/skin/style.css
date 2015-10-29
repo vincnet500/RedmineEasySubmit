@@ -91,3 +91,7 @@
 .cell-highlighted {
     font-weight: bold;
 }
+
+#res-about-topbox {
+    margin-top: 10px;
+}

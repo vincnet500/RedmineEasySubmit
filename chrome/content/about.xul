@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://redmineeasysubmit/skin/style.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://redmineeasysubmit/locale/about.dtd">
+
+<prefwindow xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&about.title;" id="res-about">
+	<prefpane id="res-prefpane">
+		
+        <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
+        <script type="application/javascript" src="chrome://redmineeasysubmit/content/about.js" />
+        
+        <box id="res-header">
+			<text value="Redmine Easy Submit" />
+		</box>
+        
+        <box id="res-subheader">
+			<description>
+			&about.information;
+			</description>
+		</box>
+        
+        <box id="res-about-topbox" orient="vertical">
+			<description>
+			&about.version;
+			</description>
+        </box>
+        
+        <box orient="vertical">
+			<description>
+			&about.createdBy;
+			</description>
+        </box>
+        
+        <box orient="vertical">
+			<description>
+			&about.contributors;
+			</description>
+        </box>
+		
+        <box id="res-footer">
+		</box>
+        
+        <hbox align="right">
+            <button oncommand="window.close();">
+              <description>&about.buttonClose;</description>
+            </button>
+		</hbox>
+		
+	</prefpane>
+</prefwindow>

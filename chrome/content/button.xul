@@ -38,6 +38,8 @@
 				<menuitem label="&button.favorites;" value="favorites" />
 				<menuseparator/>
 				<menuitem label="&button.options;" value="options" />
+                <menuseparator/>
+				<menuitem label="&button.about;" value="about" />
 			</menupopup>
 		</toolbarbutton>
 	</toolbarpalette>
