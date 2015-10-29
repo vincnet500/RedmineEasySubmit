@@ -5,10 +5,23 @@ RESSubmitTicket = {
         var loadingCount = 0;
         RESSystem.showLoading('res-loading', true);
         RESSystem.testConnection('', '', false);
+        var allProjects = [];
+        var localProjectPopup = null;
 		RESSystem.initCommonList("projectName", "projects.json", "projects", 0, true, function(popup, elem)  {
-			popup.appendChild(RESSystem.createMenuItem(elem["id"], elem["name"]));
+            localProjectPopup = popup;
+            allProjects.push(elem);
 		}, function() {
-			document.getElementById("projectName").parentNode.value = RESSystem.getPref("defaultProjectName");
+            allProjects.sort(function(a, b) {
+                if (a["name"].toLowerCase() < b["name"].toLowerCase())
+                    return -1;
+                if ( a["name"].toLowerCase() > b["name"].toLowerCase() )
+                    return 1;
+                return 0;
+            });
+            for (var key in allProjects) {
+                localProjectPopup.appendChild(RESSystem.createMenuItem(allProjects[key]["id"], allProjects[key]["name"]));
+            }
+            document.getElementById("projectName").parentNode.value = RESSystem.getPref("defaultProjectName");
             loadingCount++;
             if (loadingCount == 3) {
                 RESSystem.showLoading('res-loading', false);
