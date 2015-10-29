@@ -25,8 +25,8 @@ RESDiscussions = {
         }, false);
         
         if (mustCenter) {
-            var w = (screen.availWidth/2) - (newWidth/2);
-            var h = (screen.availHeight/2) - (newHeight/2);
+            var w = (screen.availWidth/2) - (window.innerWidth/2);
+            var h = (screen.availHeight/2) - (window.innerHeight/2);
             window.moveTo(w,h);
         }
 	},
