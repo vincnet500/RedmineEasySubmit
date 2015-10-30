@@ -10,9 +10,26 @@
         <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
         <script type="application/javascript" src="chrome://redmineeasysubmit/content/mydiscussionscontent.js" />
         
+        <vbox id="res-loading-panel">
+            <html:div id="res-loading">
+                <div id="res-loading-text">&mydiscussionscontent.loading;</div>
+                <div id="res-loading-overlay"></div>
+            </html:div>
+        </vbox>
+        
         <box id="res-header">
 			<text value="Redmine Easy Submit" />
 		</box>
+        
+        <box id="res-subheader" orient="vertical">
+			<description id="discussiontitle">
+			</description>
+            <description id="discussiondescription">
+			</description>
+		</box>
+        
+        <box id="currentNotes" orient="vertical">
+        </box>
         
         <box orient="vertical">
 			<groupbox>
@@ -25,7 +42,7 @@
 		</box>
         
         <hbox align="right"> 
-			<button oncommand="RESDiscussionsContent.submitNote(document.getElementById('newNote').value);">
+			<button oncommand="RESDiscussionsContent.submitNote(document.getElementById('newNote').value);document.getElementById('newNote').value = '';">
               <description>&mydiscussionscontent.buttonSubmit;</description>
             </button>
             <button oncommand="window.close();">

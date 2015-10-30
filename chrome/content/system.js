@@ -81,7 +81,24 @@ RESSystem = {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
                 var jsonResponse = JSON.parse(xhr.responseText);
-                return jsonResponse.user["id"];
+                return jsonResponse.user[attributeName];
+            }
+        }
+        return null;
+    },
+    
+    getCurrentUserAttributes : function(attributesNames) {
+        var xhr = new XMLHttpRequest();
+		xhr.open("GET", RESSystem.getPref("serverName") + "/users/current.json?key=" + RESSystem.getPref("apiKey"), false);
+		xhr.send(null);
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                var result = [];
+                var jsonResponse = JSON.parse(xhr.responseText);
+                for (var key in attributesNames) {
+                    result.push(jsonResponse.user[attributesNames[key]]);
+                }
+                return result;
             }
         }
         return null;

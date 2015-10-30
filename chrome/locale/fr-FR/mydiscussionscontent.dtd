@@ -2,3 +2,4 @@
 <!ENTITY mydiscussionscontent.noteDescription "Nouveau message">
 <!ENTITY mydiscussionscontent.buttonSubmit "Envoyer">
 <!ENTITY mydiscussionscontent.buttonClose "Fermer">
+<!ENTITY mydiscussionscontent.loading "Veuillez patienter">

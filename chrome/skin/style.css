@@ -95,3 +95,15 @@
 #res-about-topbox {
     margin-top: 10px;
 }
+
+#res-mydiscussionscontent {
+    max-height: 800px;
+}
+#currentNotes {
+    max-height: 400px;   
+    overflow: scroll;
+}
+#discussiontitle {
+    font-weight: bold;
+    font-size: 15px;
+}
