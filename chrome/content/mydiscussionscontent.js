@@ -14,6 +14,9 @@ RESDiscussionsContent = {
         
         RESSystem.showLoading('res-loading', true);
         this.loadNotes();
+        // Bottom currentNotes div auto scroll
+        var objDiv = document.getElementById("currentNotes");
+        objDiv.scrollTop = objDiv.scrollHeight;
         RESSystem.showLoading('res-loading', false);
 	},
     
@@ -33,7 +36,6 @@ RESDiscussionsContent = {
         var root = new Object();
 		root.issue = new Object();
 		root.issue.notes = message;
-        console.error(JSON.stringify(root));
         xhr.send(JSON.stringify(root));
     },
     
@@ -47,14 +49,19 @@ RESDiscussionsContent = {
                 
                 // Load top sub header data
                 document.getElementById("discussiontitle").value = jsonSubResponse.issue["subject"];
+                var ticketSubTitle = "[Mis à jour le " + new Date(jsonSubResponse.issue["updated_on"]).toLocaleFormat('%d-%b-%Y') + "] ";
+                if (typeof(jsonSubResponse.issue["assigned_to"]) != "undefined") {
+                       ticketSubTitle += " [Assigné à " + jsonSubResponse.issue["assigned_to"]["name"] + "] ";
+                }
+                document.getElementById("discussionsubtitle").value = ticketSubTitle;
                 var description = jsonSubResponse.issue["description"];
-                //description = description.replace(/(?:\r\n|\r|\n)/g, '<html:br/>');
-                document.getElementById("discussiondescription").setAttribute("value", description);
+                description = description.replace(/(?:\r\n|\r|\n)/g, '<html:br/>');
+                document.getElementById("discussiondescription").innerHTML = description;
                 
                 var allJournals = jsonSubResponse.issue.journals;
                 for (var key in allJournals) {
                     var note = allJournals[key];
-                    if (note["notes"] != '') {
+                    if ( (typeof(note["notes"]) != "undefined") && (note["notes"] != '') ) {
                         this.addNote("currentNotes", note.user["id"], note.user["name"], new Date(note["created_on"]).toLocaleFormat('%d-%b-%Y'), note["notes"]);
                     }
                 }
@@ -64,6 +71,7 @@ RESDiscussionsContent = {
     
     addNote : function(parentID, authorId, author, date, message) {
         const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+        const HTML_NS = "http://www.w3.org/1999/xhtml";
         
         var parent = document.getElementById(parentID);
         var lastChildGroupBox = parent.lastChild;
@@ -80,17 +88,22 @@ RESDiscussionsContent = {
         var groupbox = document.createElementNS(XUL_NS, "groupbox");
         groupbox.setAttribute("align", align);
         groupbox.setAttribute("author", authorId);
+        groupbox.setAttribute("class", "note-groupbox");
         
         var text = document.createElementNS(XUL_NS, "text");
+        text.setAttribute("class", "note-title");
         text.setAttribute("value", author);
         groupbox.appendChild(text);
         
         var text = document.createElementNS(XUL_NS, "text");
+        text.setAttribute("class", "note-subtitle");
         text.setAttribute("value", date);
         groupbox.appendChild(text);
         
-        var text = document.createElementNS(XUL_NS, "text");
-        text.setAttribute("value", message);
+        var text = document.createElementNS(HTML_NS, "div");
+        text.setAttribute("class", "note-message");
+        message = message.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+        text.innerHTML = message;
         groupbox.appendChild(text);
         
         parent.appendChild(groupbox);
@@ -98,6 +111,10 @@ RESDiscussionsContent = {
     
     getCurrentTicketID : function() {
         return window.arguments[0].substring(1, window.arguments[0].length);
+    },
+    
+    openTicket : function() {
+        window.open(RESSystem.getPref("serverName") + "/issues/" + this.getCurrentTicketID());   
     }
 
 }

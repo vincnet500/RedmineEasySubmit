@@ -74,7 +74,8 @@ RESDiscussions = {
                             var jsonSubResponse = JSON.parse(subxhr.responseText);
                             var allJournals = jsonSubResponse.issue.journals;
                             for (var key in allJournals) {
-                                if (allJournals[key].user["id"] == currentUserId) {
+                                var journalItem = allJournals[key];
+                                if ( (journalItem.user["id"] == currentUserId) && (typeof(journalItem["notes"]) != "undefined") && (journalItem["notes"] != "") ) {
                                     myDiscussionTickets.push(jsonSubResponse);
                                     break;
                                 }

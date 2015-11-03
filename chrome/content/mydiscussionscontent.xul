@@ -22,9 +22,15 @@
 		</box>
         
         <box id="res-subheader" orient="vertical">
-			<description id="discussiontitle">
+			<description id="ticket-hyperlink"><html:a href="javascript:RESDiscussionsContent.openTicket();">&mydiscussionscontent.openTicketLink;</html:a></description>
+            <description id="discussiontitle">
 			</description>
-            <textbox id="discussiondescription" multiline="true" readonly="true" />
+            <description id="discussionsubtitle">
+			</description>
+            <description>
+                <html:div id="discussiondescription">
+                </html:div>
+            </description>
 		</box>
         
         <box id="currentNotes" orient="vertical">

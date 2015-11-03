@@ -97,15 +97,40 @@
 }
 
 #res-mydiscussionscontent {
-    max-height: 800px;
 }
 #currentNotes {
-    max-height: 400px;
-    height: 400px;
+    max-height: 350px;
+    height: 350px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
 #discussiontitle {
     font-weight: bold;
-    font-size: 15px;
+    font-size: 16px;
+}
+#discussionsubtitle {
+    font-size: 14px;
+}
+#ticket-hyperlink {
+    text-align: right;
+    color: #1A0DAB;
+    text-decoration: underline;
+}
+.note-title {
+    font-weight: bold;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.note-subtitle {
+    font-style: italic;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.note-message {
+    margin-right: 10px;
+    margin-left: 10px;  
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: right;
 }

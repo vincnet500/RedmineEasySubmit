@@ -138,7 +138,6 @@ RESSubmitTicket = {
     
     displayWikiHelp: function() {
         var language = RESSystem.getCurrentShortLocale();
-        console.error(language);
         window.open(RESSystem.getPref("serverName") + "/help/" + language + "/wiki_syntax.html");   
     }
 	
