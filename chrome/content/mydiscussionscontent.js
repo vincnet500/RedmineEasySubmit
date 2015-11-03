@@ -25,7 +25,7 @@ RESDiscussionsContent = {
 			if (xhr.readyState == 4) {
 				if (xhr.status == 200) {
                     var currentUserAttributes = RESSystem.getCurrentUserAttributes(["id", "firstname", "lastname"]);
-                    RESDiscussionsContent.addNote("currentNotes", currentUserAttributes[0], currentUserAttributes[1] + " " + currentUserAttributes[2], new Date(), message);
+                    RESDiscussionsContent.addNote("currentNotes", currentUserAttributes[0], currentUserAttributes[1] + " " + currentUserAttributes[2], (new Date()).toLocaleFormat('%d-%b-%Y'), message);
                 }
             }
             //TODO Errors
@@ -47,13 +47,15 @@ RESDiscussionsContent = {
                 
                 // Load top sub header data
                 document.getElementById("discussiontitle").value = jsonSubResponse.issue["subject"];
-                document.getElementById("discussiondescription").value = jsonSubResponse.issue["description"];
+                var description = jsonSubResponse.issue["description"];
+                //description = description.replace(/(?:\r\n|\r|\n)/g, '<html:br/>');
+                document.getElementById("discussiondescription").setAttribute("value", description);
                 
                 var allJournals = jsonSubResponse.issue.journals;
                 for (var key in allJournals) {
                     var note = allJournals[key];
                     if (note["notes"] != '') {
-                        this.addNote("currentNotes", note.user["id"], note.user["name"], note["created_on"], note["notes"]);
+                        this.addNote("currentNotes", note.user["id"], note.user["name"], new Date(note["created_on"]).toLocaleFormat('%d-%b-%Y'), note["notes"]);
                     }
                 }
             }

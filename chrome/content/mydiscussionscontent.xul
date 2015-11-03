@@ -24,8 +24,7 @@
         <box id="res-subheader" orient="vertical">
 			<description id="discussiontitle">
 			</description>
-            <description id="discussiondescription">
-			</description>
+            <textbox id="discussiondescription" multiline="true" readonly="true" />
 		</box>
         
         <box id="currentNotes" orient="vertical">

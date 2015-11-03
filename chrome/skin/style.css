@@ -100,8 +100,10 @@
     max-height: 800px;
 }
 #currentNotes {
-    max-height: 400px;   
-    overflow: scroll;
+    max-height: 400px;
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 #discussiontitle {
     font-weight: bold;
