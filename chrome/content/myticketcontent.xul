@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://redmineeasysubmit/skin/style.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://redmineeasysubmit/locale/myticketcontent.dtd">
+
+<prefwindow xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&myticketcontent.title;" id="res-myticketcontent">
+	<prefpane id="res-prefpane">
+		
+        <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
+        <script type="application/javascript" src="chrome://redmineeasysubmit/content/myticketcontent.js" />
+        
+        <vbox id="res-loading-panel">
+            <html:div id="res-loading">
+                <div id="res-loading-text">&myticketcontent.loading;</div>
+                <div id="res-loading-overlay"></div>
+            </html:div>
+        </vbox>
+        
+        <box id="res-header">
+			<text value="Redmine Easy Submit" />
+		</box>
+        
+        <box id="res-subheader" orient="vertical">
+			<description id="ticket-hyperlink"><html:a href="javascript:RESTicketContent.openTicket();">&myticketcontent.openTicketLink;</html:a></description>
+            <description id="tickettitle">
+			</description>
+            <description id="ticketsubtitle">
+			</description>
+            <description>
+                <html:div id="ticketdescription">
+                </html:div>
+            </description>
+		</box>
+        
+        <box orient="vertical">
+			<groupbox>
+                <label value="&myticketcontent.lifeCycle;"/>
+				<menulist>
+				  <menupopup id="status">
+				  </menupopup>
+				</menulist>
+                <label value="&myticketcontent.noteDescription;"/>
+				<textbox id="changeStateNote" multiline="true" rows="3" />
+                <button oncommand="RESTicketContent.changeStatus(document.getElementById('changeStateNote').value);">
+                  <description>&myticketcontent.buttonChangeStatus;</description>
+                </button>
+            </groupbox>
+        </box>
+        
+        <hbox align="right"> 
+			<button oncommand="RESTicketContent.talkAccess();">
+              <description>&myticketcontent.buttonTalkAccess;</description>
+            </button>
+            <button oncommand="window.close();">
+              <description>&myticketcontent.buttonClose;</description>
+            </button>
+		</hbox>
+        
+        <box id="res-footer">
+		</box>
+		
+	</prefpane>
+</prefwindow>

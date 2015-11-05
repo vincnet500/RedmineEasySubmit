@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://redmineeasysubmit/skin/style.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://redmineeasysubmit/locale/myassigned.dtd">
+
+<window xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&myassigned.title;" id="res-myassigned">
+	<vbox>
+        <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
+		<script type="application/javascript" src="chrome://redmineeasysubmit/content/myassigned.js" />
+        
+        <box id="res-header">
+			<text value="Redmine Easy Submit" />
+		</box>
+		
+        <box id="res-subheader">
+			<description>
+                &myassigned.information;
+			</description>
+		</box>
+        
+        <vbox id="res-loading-panel">
+            <html:div id="res-loading">
+                <div id="res-loading-text">&myassigned.loading;</div>
+                <div id="res-loading-overlay"></div>
+            </html:div>
+        </vbox>
+        
+        <box orient="vertical">
+			<groupbox>
+				<label value="&myassigned.project;"/>
+				<menulist onselect="RESAssigned.loadAssignedTickets();">
+				  <menupopup id="projectName">
+				  </menupopup>
+                </menulist>
+            </groupbox>
+            <groupbox>
+                <listbox id="ticketsTable">
+                  <listhead>
+                    <listheader label="&myassigned.ticketId;" width="100" />
+                    <listheader label="&myassigned.ticketTitle;" width="450" />
+                    <listheader label="&myassigned.ticketStatus;" width="108" />
+                    <listheader label="&myassigned.ticketPriority;" width="108" />
+                    <listheader label="&myassigned.ticketTracker;" width="108" />
+                    <listheader label="&myassigned.ticketLastUpdate;" width="150" />
+                  </listhead>
+                </listbox>
+            </groupbox>
+        </box>
+        
+        <hbox align="right"> 
+            <button oncommand="window.close();">
+			  <description>&myassigned.close;</description>
+			</button>
+		</hbox>
+        
+        <box id="res-footer">
+		</box>
+	</vbox>
+</window>

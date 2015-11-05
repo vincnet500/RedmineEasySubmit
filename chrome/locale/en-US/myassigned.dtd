@@ -1,0 +1,11 @@
+<!ENTITY myassigned.title "My current tasks">
+<!ENTITY myassigned.close "Close">
+<!ENTITY myassigned.project "Project">
+<!ENTITY myassigned.loading "Please Loading">
+<!ENTITY myassigned.ticketId "ID">
+<!ENTITY myassigned.ticketTitle "Title">
+<!ENTITY myassigned.ticketStatus "Status">
+<!ENTITY myassigned.ticketPriority "Priority">
+<!ENTITY myassigned.ticketTracker "Tracker">
+<!ENTITY myassigned.ticketLastUpdate "Last update">
+<!ENTITY myassigned.information "Here you find list of tickets on which you are assigned.">

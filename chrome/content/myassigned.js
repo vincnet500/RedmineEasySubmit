@@ -1,5 +1,5 @@
 
-RESDiscussions = {
+RESAssigned = {
 	
 	init: function(mustCenter) {
         RESSystem.showLoading('res-loading', true);
@@ -34,7 +34,11 @@ RESDiscussions = {
                 return;
             }
             parameters = new Object();
-			openDialog("chrome://redmineeasysubmit/content/mydiscussionscontent.xul", "dlg", "modal,chrome,centerscreen", target.getAttribute("value"), parameters);
+            parameters.talkAccess = false;
+			openDialog("chrome://redmineeasysubmit/content/myticketcontent.xul", "dlg", "modal,chrome,centerscreen", target.getAttribute("value"), parameters);
+            if (parameters.talkAccess) {
+                openDialog("chrome://redmineeasysubmit/content/mydiscussionscontent.xul", "dlg", "modal,chrome,centerscreen", target.getAttribute("value"), parameters);
+            }
         }, false);
         
         if (mustCenter) {
@@ -44,7 +48,7 @@ RESDiscussions = {
         }
 	},
     
-    loadDiscussions : function() {
+    loadAssignedTickets : function() {
         RESSystem.showLoading('res-loading', true);
         
         RESSystem.cleanListBox("ticketsTable");
@@ -56,13 +60,9 @@ RESDiscussions = {
         for (var key in tickets) {
             var ticket = tickets[key];
             var className = "";
-            var allJournals = ticket.issue.journals;
-            if (allJournals[allJournals.length - 1].user["id"] != currentUserId) {
-                className = "cell-highlighted";
-            }
-            var updatedOnDate = new Date(ticket.issue["updated_on"]).toLocaleFormat('%d-%b-%Y');
-            var subject = ticket.issue["subject"];
-            RESSystem.appendListBox("ticketsTable", className, ["#" + ticket.issue["id"], (subject.length > 75?subject.substring(0, 72) + "...":subject), ticket.issue.status["name"], ticket.issue.priority["name"], ticket.issue.tracker["name"], updatedOnDate]);
+            var updatedOnDate = new Date(ticket["updated_on"]).toLocaleFormat('%d-%b-%Y');
+            var subject = ticket["subject"];
+            RESSystem.appendListBox("ticketsTable", className, ["#" + ticket["id"], (subject.length > 75?subject.substring(0, 72) + "...":subject), ticket.status["name"], ticket.priority["name"], ticket.tracker["name"], updatedOnDate]);
         }
         
         RESSystem.showLoading('res-loading', false);
@@ -70,7 +70,7 @@ RESDiscussions = {
     
     // TODO gérer la récursivité (offset/limit)
     loadTickets : function(project, currentUserId) {
-        var myDiscussionTickets = [];
+        var myTickets = [];
         var xhr = new XMLHttpRequest();
 		xhr.open("GET", RESSystem.getPref("serverName") + "/issues.json?key=" + RESSystem.getPref("apiKey") + "&project_id=" + project + "&status_id=open&limit=100", false);
 		xhr.send(null);
@@ -79,29 +79,16 @@ RESDiscussions = {
                 var jsonResponse = JSON.parse(xhr.responseText);
                 for (var key in jsonResponse.issues) {
                     var issueId = jsonResponse.issues[key]["id"];
-                    var subxhr = new XMLHttpRequest();
-                    subxhr.open("GET", RESSystem.getPref("serverName") + "/issues/" + issueId + ".json?include=journals&key=" + RESSystem.getPref("apiKey"), false);
-                    subxhr.send(null);
-                    if (subxhr.readyState == 4) {
-                        if (subxhr.status == 200) {
-                            var jsonSubResponse = JSON.parse(subxhr.responseText);
-                            var allJournals = jsonSubResponse.issue.journals;
-                            for (var key in allJournals) {
-                                var journalItem = allJournals[key];
-                                if ( (journalItem.user["id"] == currentUserId) && (typeof(journalItem["notes"]) != "undefined") && (journalItem["notes"] != "") ) {
-                                    myDiscussionTickets.push(jsonSubResponse);
-                                    break;
-                                }
-                            }
-                        }
+                    var assignedToNode = jsonResponse.issues[key]["assigned_to"];
+                    if ( (typeof(assignedToNode) != "undefined") && (assignedToNode["id"] == currentUserId) ) {
+                        myTickets.push(jsonResponse.issues[key]);
                     }
-                    
                 }
             }
         }
-        return myDiscussionTickets;   
+        return myTickets;   
     }
 
 }
 
-window.addEventListener("load", function () { RESDiscussions.init(true); }, false);
+window.addEventListener("load", function () { RESAssigned.init(true); }, false);

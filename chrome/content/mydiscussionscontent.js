@@ -47,6 +47,7 @@ RESDiscussionsContent = {
             if (xhr.status == 200) {
                 var jsonSubResponse = JSON.parse(xhr.responseText);
                 
+                // TODO traductions
                 // Load top sub header data
                 document.getElementById("discussiontitle").value = jsonSubResponse.issue["subject"];
                 var ticketSubTitle = "[Mis à jour le " + new Date(jsonSubResponse.issue["updated_on"]).toLocaleFormat('%d-%b-%Y') + "] ";

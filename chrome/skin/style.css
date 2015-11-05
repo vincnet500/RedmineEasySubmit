@@ -82,7 +82,7 @@
     text-decoration: underline;
 }
 
-#res-mydiscussions, #res-mydiscussionscontent {
+#res-mydiscussions, #res-mydiscussionscontent, #res-myassigned, #res-myticketcontent {
     width: 1024px;
 }
 #ticketsTable {
@@ -96,19 +96,17 @@
     margin-top: 10px;
 }
 
-#res-mydiscussionscontent {
-}
 #currentNotes {
     max-height: 350px;
     height: 350px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
-#discussiontitle {
+#discussiontitle, #tickettitle {
     font-weight: bold;
     font-size: 16px;
 }
-#discussionsubtitle {
+#discussionsubtitle, #ticketsubtitle {
     font-size: 14px;
 }
 #ticket-hyperlink {

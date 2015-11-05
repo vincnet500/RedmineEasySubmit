@@ -1,0 +1,8 @@
+<!ENTITY myticketcontent.title "Détails du ticket">
+<!ENTITY myticketcontent.buttonTalkAccess "Accéder à la discussion">
+<!ENTITY myticketcontent.buttonClose "Fermer">
+<!ENTITY myticketcontent.loading "Veuillez patienter">
+<!ENTITY myticketcontent.openTicketLink "Ouvrir le ticket">
+<!ENTITY myticketcontent.lifeCycle "Cycle de vie du ticket">
+<!ENTITY myticketcontent.buttonChangeStatus "Validation du changement d'état">
+<!ENTITY myticketcontent.noteDescription "Note">

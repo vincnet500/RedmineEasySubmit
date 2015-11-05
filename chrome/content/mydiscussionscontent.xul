@@ -42,9 +42,6 @@
 				<textbox id="newNote" multiline="true" rows="3" />
             </groupbox>
         </box>
-		
-        <box id="res-footer">
-		</box>
         
         <hbox align="right"> 
 			<button oncommand="RESDiscussionsContent.submitNote(document.getElementById('newNote').value);document.getElementById('newNote').value = '';">
@@ -55,5 +52,8 @@
             </button>
 		</hbox>
 		
+        <box id="res-footer">
+		</box>
+        
 	</prefpane>
 </prefwindow>
