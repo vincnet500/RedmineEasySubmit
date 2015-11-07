@@ -82,7 +82,7 @@
     text-decoration: underline;
 }
 
-#res-mydiscussions, #res-mydiscussionscontent, #res-myassigned, #res-myticketcontent {
+#res-mydiscussions, #res-mydiscussionscontent, #res-myassigned, #res-mycreated, #res-myticketcontent {
     width: 1024px;
 }
 #ticketsTable {
@@ -106,7 +106,7 @@
     font-weight: bold;
     font-size: 16px;
 }
-#discussionsubtitle, #ticketsubtitle {
+#discussionsubtitle, #ticketsubtitle, #discussionsubsubtitle, #ticketsubsubtitle {
     font-size: 14px;
 }
 #ticket-hyperlink {
@@ -131,4 +131,10 @@
     margin-bottom: 5px;
     margin-top: 5px;
     text-align: right;
+    background-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 2px;
 }

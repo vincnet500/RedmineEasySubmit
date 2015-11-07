@@ -264,6 +264,28 @@ RESSystem = {
 		return stringsBundle.getString(key);
 	},
     
+    getTopPriorities: function(topLimit) {
+        var topPriorities = [];
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", RESSystem.getPref("serverName") + "/enumerations/issue_priorities.json?key=" + RESSystem.getPref("apiKey"), false);
+        xhr.send(null);
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                var jsonResponse = JSON.parse(xhr.responseText);
+                var priorities = jsonResponse["issue_priorities"];
+                var index = 0;
+                for (var key in priorities.reverse()) {
+                    topPriorities.push(priorities[key]["id"]);
+                    index++;
+                    if (index == topLimit) {
+                        break;   
+                    }
+                }
+            }
+        }
+        return topPriorities;
+    },
+    
     getCurrentShortLocale : function() {
         var chromeREgistryService = Components.classes["@mozilla.org/chrome/chrome-registry;1"]
             .getService(Components.interfaces.nsIXULChromeRegistry);

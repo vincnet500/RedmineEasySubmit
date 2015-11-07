@@ -13,10 +13,13 @@ RESDiscussionsContent = {
         }
         
         RESSystem.showLoading('res-loading', true);
+        
         this.loadNotes();
+        
         // Bottom currentNotes div auto scroll
         var objDiv = document.getElementById("currentNotes");
         objDiv.scrollTop = objDiv.scrollHeight;
+        
         RESSystem.showLoading('res-loading', false);
 	},
     
@@ -29,6 +32,9 @@ RESDiscussionsContent = {
 				if (xhr.status == 200) {
                     var currentUserAttributes = RESSystem.getCurrentUserAttributes(["id", "firstname", "lastname"]);
                     RESDiscussionsContent.addNote("currentNotes", currentUserAttributes[0], currentUserAttributes[1] + " " + currentUserAttributes[2], (new Date()).toLocaleFormat('%d-%b-%Y'), message);
+                    // Bottom currentNotes div auto scroll
+                    var objDiv = document.getElementById("currentNotes");
+                    objDiv.scrollTop = objDiv.scrollHeight;
                 }
             }
             //TODO Errors
@@ -47,14 +53,14 @@ RESDiscussionsContent = {
             if (xhr.status == 200) {
                 var jsonSubResponse = JSON.parse(xhr.responseText);
                 
-                // TODO traductions
                 // Load top sub header data
                 document.getElementById("discussiontitle").value = jsonSubResponse.issue["subject"];
-                var ticketSubTitle = "[Mis à jour le " + new Date(jsonSubResponse.issue["updated_on"]).toLocaleFormat('%d-%b-%Y') + "] ";
+                var ticketSubTitle = RESSystem.getTranslation("res-string-bundle", "ticket.information.updateon") + " " + new Date(jsonSubResponse.issue["updated_on"]).toLocaleFormat('%d-%b-%Y') + "] ";
                 if (typeof(jsonSubResponse.issue["assigned_to"]) != "undefined") {
-                       ticketSubTitle += " [Assigné à " + jsonSubResponse.issue["assigned_to"]["name"] + "] ";
+                       ticketSubTitle += " / " + RESSystem.getTranslation("res-string-bundle", "ticket.information.assignedto") + " " + jsonSubResponse.issue["assigned_to"]["name"] + "] ";
                 }
                 document.getElementById("discussionsubtitle").value = ticketSubTitle;
+                document.getElementById("discussionsubsubtitle").value = RESSystem.getTranslation("res-string-bundle", "ticket.information.status") + " : " + jsonSubResponse.issue.status["name"] + " / " + RESSystem.getTranslation("res-string-bundle", "ticket.information.priority") + " : " + jsonSubResponse.issue.priority["name"];
                 var description = jsonSubResponse.issue["description"];
                 description = description.replace(/(?:\r\n|\r|\n)/g, '<html:br/>');
                 document.getElementById("discussiondescription").innerHTML = description;

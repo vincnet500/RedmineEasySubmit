@@ -8,4 +8,4 @@
 <!ENTITY myassigned.ticketPriority "Priorité">
 <!ENTITY myassigned.ticketTracker "Tracker">
 <!ENTITY myassigned.ticketLastUpdate "Dernière modification">
-<!ENTITY myassigned.information "Vous trouvez ici une liste des tickets sur lesquels vous êtes assignés.">
+<!ENTITY myassigned.information "Vous trouvez ici une liste des tickets sur lesquels vous êtes assignés. Les tickets avec une priorité haute sont mis en évidence en gras.">

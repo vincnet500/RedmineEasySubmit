@@ -6,7 +6,10 @@
 
 <prefwindow xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&myticketcontent.title;" id="res-myticketcontent">
 	<prefpane id="res-prefpane">
-		
+		<stringbundleset id="RESStringbundleset">
+			<stringbundle id="res-string-bundle" src="chrome://redmineeasysubmit/locale/submitticket.properties"/>
+		</stringbundleset>
+    
         <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
         <script type="application/javascript" src="chrome://redmineeasysubmit/content/myticketcontent.js" />
         
@@ -27,6 +30,8 @@
 			</description>
             <description id="ticketsubtitle">
 			</description>
+            <description id="ticketsubsubtitle">
+			</description>
             <description>
                 <html:div id="ticketdescription">
                 </html:div>
@@ -40,10 +45,18 @@
 				  <menupopup id="status">
 				  </menupopup>
 				</menulist>
-                <label value="&myticketcontent.noteDescription;"/>
-				<textbox id="changeStateNote" multiline="true" rows="3" />
-                <button oncommand="RESTicketContent.changeStatus(document.getElementById('changeStateNote').value);">
+                <button oncommand="RESTicketContent.changeStatus();">
                   <description>&myticketcontent.buttonChangeStatus;</description>
+                </button>
+            </groupbox>
+            <groupbox>
+                <label value="&myticketcontent.priority;"/>
+				<menulist>
+				  <menupopup id="priority">
+				  </menupopup>
+				</menulist>
+                <button oncommand="RESTicketContent.changePriority();">
+                  <description>&myticketcontent.buttonChangePriority;</description>
                 </button>
             </groupbox>
         </box>

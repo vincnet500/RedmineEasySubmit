@@ -38,8 +38,8 @@
                 <listbox id="ticketsTable">
                   <listhead>
                     <listheader label="&mydiscussions.ticketId;" width="100" />
-                    <listheader label="&mydiscussions.ticketTitle;" width="450" />
-                    <listheader label="&mydiscussions.ticketStatus;" width="108" />
+                    <listheader label="&mydiscussions.ticketTitle;" width="400" />
+                    <listheader label="&mydiscussions.ticketStatus;" width="158" />
                     <listheader label="&mydiscussions.ticketPriority;" width="108" />
                     <listheader label="&mydiscussions.ticketTracker;" width="108" />
                     <listheader label="&mydiscussions.ticketLastAnswerDate;" width="150" />

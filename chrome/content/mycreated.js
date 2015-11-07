@@ -1,5 +1,5 @@
 
-RESAssigned = {
+RESCreated = {
 	
 	init: function(mustCenter) {
         RESSystem.showLoading('res-loading', true);
@@ -48,7 +48,7 @@ RESAssigned = {
         }
 	},
     
-    loadAssignedTickets : function() {
+    loadCreatedTickets : function() {
         RESSystem.showLoading('res-loading', true);
         
         RESSystem.cleanListBox("ticketsTable");
@@ -83,8 +83,7 @@ RESAssigned = {
                 var jsonResponse = JSON.parse(xhr.responseText);
                 for (var key in jsonResponse.issues) {
                     var issueId = jsonResponse.issues[key]["id"];
-                    var assignedToNode = jsonResponse.issues[key]["assigned_to"];
-                    if ( (typeof(assignedToNode) != "undefined") && (assignedToNode["id"] == currentUserId) ) {
+                    if (jsonResponse.issues[key].author["id"] == currentUserId) {
                         myTickets.push(jsonResponse.issues[key]);
                     }
                 }
@@ -95,4 +94,4 @@ RESAssigned = {
 
 }
 
-window.addEventListener("load", function () { RESAssigned.init(true); }, false);
+window.addEventListener("load", function () { RESCreated.init(true); }, false);

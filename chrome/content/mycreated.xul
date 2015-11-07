@@ -2,12 +2,12 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://redmineeasysubmit/skin/style.css" type="text/css"?>
 
-<!DOCTYPE window SYSTEM "chrome://redmineeasysubmit/locale/myassigned.dtd">
+<!DOCTYPE window SYSTEM "chrome://redmineeasysubmit/locale/mycreated.dtd">
 
-<window xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&myassigned.title;" id="res-myassigned">
+<window xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&mycreated.title;" id="res-mycreated">
 	<vbox>
         <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
-		<script type="application/javascript" src="chrome://redmineeasysubmit/content/myassigned.js" />
+		<script type="application/javascript" src="chrome://redmineeasysubmit/content/mycreated.js" />
         
         <box id="res-header">
 			<text value="Redmine Easy Submit" />
@@ -15,21 +15,21 @@
 		
         <box id="res-subheader">
 			<description>
-                &myassigned.information;
+                &mycreated.information;
 			</description>
 		</box>
         
         <vbox id="res-loading-panel">
             <html:div id="res-loading">
-                <div id="res-loading-text">&myassigned.loading;</div>
+                <div id="res-loading-text">&mycreated.loading;</div>
                 <div id="res-loading-overlay"></div>
             </html:div>
         </vbox>
         
         <box orient="vertical">
 			<groupbox>
-				<label value="&myassigned.project;"/>
-				<menulist onselect="RESAssigned.loadAssignedTickets();">
+				<label value="&mycreated.project;"/>
+				<menulist onselect="RESCreated.loadCreatedTickets();">
 				  <menupopup id="projectName">
 				  </menupopup>
                 </menulist>
@@ -37,12 +37,12 @@
             <groupbox>
                 <listbox id="ticketsTable">
                   <listhead>
-                    <listheader label="&myassigned.ticketId;" width="100" />
-                    <listheader label="&myassigned.ticketTitle;" width="400" />
-                    <listheader label="&myassigned.ticketStatus;" width="158" />
-                    <listheader label="&myassigned.ticketPriority;" width="108" />
-                    <listheader label="&myassigned.ticketTracker;" width="108" />
-                    <listheader label="&myassigned.ticketLastUpdate;" width="150" />
+                    <listheader label="&mycreated.ticketId;" width="100" />
+                    <listheader label="&mycreated.ticketTitle;" width="400" />
+                    <listheader label="&mycreated.ticketStatus;" width="158" />
+                    <listheader label="&mycreated.ticketPriority;" width="108" />
+                    <listheader label="&mycreated.ticketTracker;" width="108" />
+                    <listheader label="&mycreated.ticketLastUpdate;" width="150" />
                   </listhead>
                 </listbox>
             </groupbox>
@@ -50,7 +50,7 @@
         
         <hbox align="right"> 
             <button oncommand="window.close();">
-			  <description>&myassigned.close;</description>
+			  <description>&mycreated.close;</description>
 			</button>
 		</hbox>
         

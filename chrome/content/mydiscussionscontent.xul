@@ -6,7 +6,10 @@
 
 <prefwindow xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&mydiscussionscontent.title;" id="res-mydiscussionscontent">
 	<prefpane id="res-prefpane">
-		
+		<stringbundleset id="RESStringbundleset">
+			<stringbundle id="res-string-bundle" src="chrome://redmineeasysubmit/locale/submitticket.properties"/>
+		</stringbundleset>
+        
         <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
         <script type="application/javascript" src="chrome://redmineeasysubmit/content/mydiscussionscontent.js" />
         
@@ -26,6 +29,8 @@
             <description id="discussiontitle">
 			</description>
             <description id="discussionsubtitle">
+			</description>
+            <description id="discussionsubsubtitle">
 			</description>
             <description>
                 <html:div id="discussiondescription">

@@ -10,5 +10,5 @@
 <!ENTITY submitticket.assignedTo "Assigned to">
 <!ENTITY submitticket.buttonClose "Cancel">
 <!ENTITY submitticket.buttonSubmit "Submit ticket">
-<!ENTITY submitticket.loading "Please loading">
+<!ENTITY submitticket.loading "Please wait">
 <!ENTITY submitticket.wikiHelpLink "Help on Wiki syntaxes">

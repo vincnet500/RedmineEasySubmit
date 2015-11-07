@@ -53,6 +53,9 @@ RedmineEasySubmit = {
         else if (a == 'myassigned') {
 			window.open('chrome://redmineeasysubmit/content/myassigned.xul', '', 'chrome,centerscreen');
 		}
+        else if (a == 'mysubmited') {
+			window.open('chrome://redmineeasysubmit/content/mycreated.xul', '', 'chrome,centerscreen');
+		}
         else if (a == 'about') {
 			window.open('chrome://redmineeasysubmit/content/about.xul', '', 'chrome,centerscreen');
 		}

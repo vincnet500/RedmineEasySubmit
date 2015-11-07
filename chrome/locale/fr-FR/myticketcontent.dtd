@@ -5,4 +5,5 @@
 <!ENTITY myticketcontent.openTicketLink "Ouvrir le ticket">
 <!ENTITY myticketcontent.lifeCycle "Cycle de vie du ticket">
 <!ENTITY myticketcontent.buttonChangeStatus "Validation du changement d'état">
-<!ENTITY myticketcontent.noteDescription "Note">
+<!ENTITY myticketcontent.priority "Priorité">
+<!ENTITY myticketcontent.buttonChangePriority "Validation du changement de priorité">

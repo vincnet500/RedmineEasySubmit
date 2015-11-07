@@ -1,0 +1,11 @@
+<!ENTITY mycreated.title "My created tickets">
+<!ENTITY mycreated.close "Close">
+<!ENTITY mycreated.project "Project">
+<!ENTITY mycreated.loading "Please wait">
+<!ENTITY mycreated.ticketId "ID">
+<!ENTITY mycreated.ticketTitle "Title">
+<!ENTITY mycreated.ticketStatus "Status">
+<!ENTITY mycreated.ticketPriority "Priority">
+<!ENTITY mycreated.ticketTracker "Tracker">
+<!ENTITY mycreated.ticketLastUpdate "Last update">
+<!ENTITY mycreated.information "Here you find list of open tickets you submitted. Tickets with high priority are highlighted is bold.">

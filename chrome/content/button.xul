@@ -14,6 +14,7 @@
 			<menupopup id="res-context-menu" ignorekeys="true">
 				<menuitem label="&button.submitticket;" value="submitticket" />
                 <menuseparator/>
+                <menuitem label="&button.opened;" value="opened" />
                 <menuitem label="&button.mysubmited;" value="mysubmited" />
 				<menuitem label="&button.myassigned;" value="myassigned" />
                 <menuitem label="&button.mydiscussions;" value="mydiscussions" />
