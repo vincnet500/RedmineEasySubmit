@@ -1,0 +1,12 @@
+<!ENTITY myopened.title "Tickets ouverts">
+<!ENTITY myopened.close "Fermer">
+<!ENTITY myopened.project "Projet">
+<!ENTITY myopened.loading "Veuillez patienter">
+<!ENTITY myopened.ticketId "ID">
+<!ENTITY myopened.ticketTitle "Titre">
+<!ENTITY myopened.ticketStatus "Statut">
+<!ENTITY myopened.ticketPriority "Priorité">
+<!ENTITY myopened.ticketTracker "Tracker">
+<!ENTITY myopened.ticketLastUpdate "Dernière modification">
+<!ENTITY myopened.refresh "Rafraichir">
+<!ENTITY myopened.information "Vous trouvez ici une liste de tous les tickets ouverts. Les tickets avec une priorité haute sont mis en évidence en gras.">

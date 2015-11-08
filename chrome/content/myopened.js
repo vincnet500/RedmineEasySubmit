@@ -1,16 +1,13 @@
 
-RESAssigned = {
-    
+RESOpened = {
+	
     init: function(mustCenter) {
         RESGenericTickets.init(mustCenter, this.getDetailsView);
     },
     
     findTicket: function(currentUserId, ticket) {
-        var assignedToNode = ticket["assigned_to"];
-        if ( (typeof(assignedToNode) != "undefined") && (assignedToNode["id"] == currentUserId) ) {
-            return ticket;
-        }
-        return null;
+        // We return all tickets : we only have "opened" tickets in generic source
+        return ticket;
     },
     
     customTicketClassName: function(topPriorities, ticket, currentUserId) {
@@ -23,7 +20,7 @@ RESAssigned = {
     getDetailsView: function() {
         return "myticketcontent.xul";    
     }
-    
+
 }
 
-window.addEventListener("load", function () { RESAssigned.init(true); }, false);
+window.addEventListener("load", function () { RESOpened.init(true); }, false);

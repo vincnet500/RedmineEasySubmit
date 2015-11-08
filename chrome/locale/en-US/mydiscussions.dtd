@@ -8,4 +8,5 @@
 <!ENTITY mydiscussions.ticketPriority "Priority">
 <!ENTITY mydiscussions.ticketTracker "Tracker">
 <!ENTITY mydiscussions.ticketLastAnswerDate "Last update">
-<!ENTITY mydiscussions.information "Here you find list of tickets on which you submitted comments. Tickets for which last answer is not yours are highlighted is bold.">
+<!ENTITY mydiscussions.refresh "Refresh">
+<!ENTITY mydiscussions.information "Here you find list of tickets on which you have submitted comments. Tickets for which last answer is not yours are highlighted in bold.">

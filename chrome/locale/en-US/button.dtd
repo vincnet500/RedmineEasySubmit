@@ -6,8 +6,8 @@
 <!ENTITY button.directaccess "Direct Access">
 <!ENTITY button.search "Search">
 <!ENTITY button.searchFavoriteTicket "Search on my favorite project">
-<!ENTITY button.opened "Opened tickets">
-<!ENTITY button.mysubmited "My created tickets">
-<!ENTITY button.myassigned "My assigned tickets">
-<!ENTITY button.mydiscussions "My current talks">
+<!ENTITY button.opened "Opened tickets (beta)">
+<!ENTITY button.mysubmited "My created tickets (beta)">
+<!ENTITY button.myassigned "My assigned tickets (beta)">
+<!ENTITY button.mydiscussions "My current talks (beta)">
 <!ENTITY button.about "About">

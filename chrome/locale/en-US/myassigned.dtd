@@ -8,4 +8,5 @@
 <!ENTITY myassigned.ticketPriority "Priority">
 <!ENTITY myassigned.ticketTracker "Tracker">
 <!ENTITY myassigned.ticketLastUpdate "Last update">
-<!ENTITY myassigned.information "Here you find list of tickets on which you are assigned. Tickets with high priority are highlighted is bold.">
+<!ENTITY myassigned.refresh "Refresh">
+<!ENTITY myassigned.information "Here you find list of tickets on which you are assigned. Tickets with high priority are highlighted in bold.">

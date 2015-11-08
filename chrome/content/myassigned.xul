@@ -7,6 +7,7 @@
 <window xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&myassigned.title;" id="res-myassigned">
 	<vbox>
         <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
+        <script type="application/javascript" src="chrome://redmineeasysubmit/content/mygenerictickets.js" />
 		<script type="application/javascript" src="chrome://redmineeasysubmit/content/myassigned.js" />
         
         <box id="res-header">
@@ -29,7 +30,7 @@
         <box orient="vertical">
 			<groupbox>
 				<label value="&myassigned.project;"/>
-				<menulist onselect="RESAssigned.loadAssignedTickets();">
+				<menulist onselect="RESGenericTickets.loadTickets(RESAssigned.findTicket, RESAssigned.customTicketClassName);">
 				  <menupopup id="projectName">
 				  </menupopup>
                 </menulist>
@@ -49,6 +50,9 @@
         </box>
         
         <hbox align="right"> 
+            <button oncommand="RESGenericTickets.loadTickets(RESAssigned.findTicket, RESAssigned.customTicketClassName);">
+			  <description>&myassigned.refresh;</description>
+			</button>
             <button oncommand="window.close();">
 			  <description>&myassigned.close;</description>
 			</button>

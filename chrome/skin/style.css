@@ -82,7 +82,7 @@
     text-decoration: underline;
 }
 
-#res-mydiscussions, #res-mydiscussionscontent, #res-myassigned, #res-mycreated, #res-myticketcontent {
+#res-mydiscussions, #res-mydiscussionscontent, #res-myassigned, #res-mycreated, #res-myopened, #res-myticketcontent {
     width: 1024px;
 }
 #ticketsTable {

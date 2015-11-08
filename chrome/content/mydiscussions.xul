@@ -7,6 +7,7 @@
 <window xmlns:html="http://www.w3.org/1999/xhtml" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&mydiscussions.title;" id="res-mydiscussions">
 	<vbox>
         <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
+        <script type="application/javascript" src="chrome://redmineeasysubmit/content/mygenerictickets.js" />
 		<script type="application/javascript" src="chrome://redmineeasysubmit/content/mydiscussions.js" />
         
         <box id="res-header">
@@ -29,7 +30,7 @@
         <box orient="vertical">
 			<groupbox>
 				<label value="&mydiscussions.project;"/>
-				<menulist onselect="RESDiscussions.loadDiscussions();">
+				<menulist onselect="RESGenericTickets.loadTickets(RESDiscussions.findTicket, RESDiscussions.customTicketClassName);">
 				  <menupopup id="projectName">
 				  </menupopup>
                 </menulist>
@@ -49,6 +50,9 @@
         </box>
         
         <hbox align="right"> 
+            <button oncommand="RESGenericTickets.loadTickets(RESDiscussions.findTicket, RESDiscussions.customTicketClassName);">
+			  <description>&mydiscussions.refresh;</description>
+			</button>
             <button oncommand="window.close();">
 			  <description>&mydiscussions.close;</description>
 			</button>

@@ -114,7 +114,6 @@ RESTicketContent = {
             }
             //TODO Errors
         }
-        console.error(id);
         var root = new Object();
 		root.issue = new Object();
         root.issue[putAttributeNode] = id;

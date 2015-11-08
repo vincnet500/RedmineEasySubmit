@@ -8,4 +8,5 @@
 <!ENTITY mycreated.ticketPriority "Priorité">
 <!ENTITY mycreated.ticketTracker "Tracker">
 <!ENTITY mycreated.ticketLastUpdate "Dernière modification">
+<!ENTITY mycreated.refresh "Rafraichir">
 <!ENTITY mycreated.information "Vous trouvez ici une liste des tickets que vous avez créés. Les tickets avec une priorité haute sont mis en évidence en gras.">

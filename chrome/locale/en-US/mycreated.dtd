@@ -8,4 +8,5 @@
 <!ENTITY mycreated.ticketPriority "Priority">
 <!ENTITY mycreated.ticketTracker "Tracker">
 <!ENTITY mycreated.ticketLastUpdate "Last update">
-<!ENTITY mycreated.information "Here you find list of open tickets you submitted. Tickets with high priority are highlighted is bold.">
+<!ENTITY mycreated.refresh "Refresh">
+<!ENTITY mycreated.information "Here you find list of open tickets you submitted. Tickets with high priority are highlighted in bold.">
