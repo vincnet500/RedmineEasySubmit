@@ -11,6 +11,7 @@
 		</stringbundleset>
     
         <script type="application/javascript" src="chrome://redmineeasysubmit/content/system.js" />
+        <script type="application/javascript" src="chrome://redmineeasysubmit/content/sanitizer.js" />
         <script type="application/javascript" src="chrome://redmineeasysubmit/content/myticketcontent.js" />
         
         <vbox id="res-loading-panel">

@@ -61,9 +61,8 @@ RESDiscussionsContent = {
                 }
                 document.getElementById("discussionsubtitle").value = ticketSubTitle;
                 document.getElementById("discussionsubsubtitle").value = RESSystem.getTranslation("res-string-bundle", "ticket.information.status") + " : " + jsonSubResponse.issue.status["name"] + " / " + RESSystem.getTranslation("res-string-bundle", "ticket.information.priority") + " : " + jsonSubResponse.issue.priority["name"];
-                var description = jsonSubResponse.issue["description"];
-                description = description.replace(/(?:\r\n|\r|\n)/g, '<html:br/>');
-                document.getElementById("discussiondescription").innerHTML = description;
+                var descriptionContentNode = document.createTextNode(jsonSubResponse.issue["description"]);
+                document.getElementById("discussiondescription").appendChild(descriptionContentNode);
                 
                 var allJournals = jsonSubResponse.issue.journals;
                 for (var key in allJournals) {
@@ -109,8 +108,8 @@ RESDiscussionsContent = {
         
         var text = document.createElementNS(HTML_NS, "div");
         text.setAttribute("class", "note-message");
-        message = message.replace(/(?:\r\n|\r|\n)/g, '<br/>');
-        text.innerHTML = message;
+        var messageContentNode = document.createTextNode(message);
+        text.appendChild(messageContentNode);
         groupbox.appendChild(text);
         
         parent.appendChild(groupbox);

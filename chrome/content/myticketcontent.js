@@ -57,9 +57,8 @@ RESTicketContent = {
                 }
                 document.getElementById("ticketsubtitle").value = ticketSubTitle;
                 document.getElementById("ticketsubsubtitle").value = RESSystem.getTranslation("res-string-bundle", "ticket.information.status") + " : " + jsonSubResponse.issue.status["name"] + " / " + RESSystem.getTranslation("res-string-bundle", "ticket.information.priority") + " : " + jsonSubResponse.issue.priority["name"];
-                var description = jsonSubResponse.issue["description"];
-                description = description.replace(/(?:\r\n|\r|\n)/g, '<html:br/>');
-                document.getElementById("ticketdescription").innerHTML = description;
+                var descriptionContentNode = document.createTextNode(jsonSubResponse.issue["description"]);
+                document.getElementById("ticketdescription").appendChild(descriptionContentNode);
             }
         }
     },
