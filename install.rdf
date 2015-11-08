@@ -4,7 +4,7 @@
 		<em:id>redmineeasysubmit@vincnet500.com</em:id>
 		<em:type>2</em:type>
 		<em:name>Redmine Easy Submit</em:name>
-		<em:version>0.7</em:version>
+		<em:version>0.8</em:version>
 		<em:creator>vincnet500</em:creator>
         <em:description>Easy submit and manage Redmine tickets from Firefox</em:description>
 		<em:optionsURL>chrome://redmineeasysubmit/content/options.xul</em:optionsURL>
