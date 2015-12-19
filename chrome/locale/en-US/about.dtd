@@ -1,6 +1,6 @@
 <!ENTITY about.title "About Redmine Easy Submit">
 <!ENTITY about.information "A tool to improve use of Redmine application, from Firefox">
 <!ENTITY about.buttonClose "Close">
-<!ENTITY about.version "Version 0.8">
+<!ENTITY about.version "Version 0.9">
 <!ENTITY about.createdBy "Created by vincnet500 (https://github.com/vincnet500/RedmineEasySubmit)">
 <!ENTITY about.contributors "Other Contributors on project : https://github.com/wtoscer">
