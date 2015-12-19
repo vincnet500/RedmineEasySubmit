@@ -43,24 +43,26 @@ RESTicketContent = {
     
     loadTicketDetails : function() {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", RESSystem.getPref("serverName") + "/issues/" + this.getCurrentTicketID() + ".json?key=" + RESSystem.getPref("apiKey"), false);
-        xhr.send(null);
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-                var jsonSubResponse = JSON.parse(xhr.responseText);
-                
-                // Load top sub header data
-                document.getElementById("tickettitle").value = jsonSubResponse.issue["subject"];
-                var ticketSubTitle = RESSystem.getTranslation("res-string-bundle", "ticket.information.updateon") + " " + new Date(jsonSubResponse.issue["updated_on"]).toLocaleFormat('%d-%b-%Y') + " ";
-                if (typeof(jsonSubResponse.issue["assigned_to"]) != "undefined") {
-                       ticketSubTitle += " / " + RESSystem.getTranslation("res-string-bundle", "ticket.information.assignedto") + " " + jsonSubResponse.issue["assigned_to"]["name"] + " ";
+        xhr.open("GET", RESSystem.getPref("serverName") + "/issues/" + this.getCurrentTicketID() + ".json?key=" + RESSystem.getPref("apiKey"), true);
+        xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4) {
+				if (xhr.status == 200) {
+                    var jsonSubResponse = JSON.parse(xhr.responseText);
+
+                    // Load top sub header data
+                    document.getElementById("tickettitle").value = jsonSubResponse.issue["subject"];
+                    var ticketSubTitle = RESSystem.getTranslation("res-string-bundle", "ticket.information.updateon") + " " + new Date(jsonSubResponse.issue["updated_on"]).toLocaleFormat('%d-%b-%Y') + " ";
+                    if (typeof(jsonSubResponse.issue["assigned_to"]) != "undefined") {
+                           ticketSubTitle += " / " + RESSystem.getTranslation("res-string-bundle", "ticket.information.assignedto") + " " + jsonSubResponse.issue["assigned_to"]["name"] + " ";
+                    }
+                    document.getElementById("ticketsubtitle").value = ticketSubTitle;
+                    document.getElementById("ticketsubsubtitle").value = RESSystem.getTranslation("res-string-bundle", "ticket.information.status") + " : " + jsonSubResponse.issue.status["name"] + " / " + RESSystem.getTranslation("res-string-bundle", "ticket.information.priority") + " : " + jsonSubResponse.issue.priority["name"];
+                    var descriptionContentNode = document.createTextNode(jsonSubResponse.issue["description"]);
+                    document.getElementById("ticketdescription").appendChild(descriptionContentNode);
                 }
-                document.getElementById("ticketsubtitle").value = ticketSubTitle;
-                document.getElementById("ticketsubsubtitle").value = RESSystem.getTranslation("res-string-bundle", "ticket.information.status") + " : " + jsonSubResponse.issue.status["name"] + " / " + RESSystem.getTranslation("res-string-bundle", "ticket.information.priority") + " : " + jsonSubResponse.issue.priority["name"];
-                var descriptionContentNode = document.createTextNode(jsonSubResponse.issue["description"]);
-                document.getElementById("ticketdescription").appendChild(descriptionContentNode);
             }
         }
+        xhr.send(null);
     },
     
     getCurrentTicketID : function() {
@@ -95,23 +97,24 @@ RESTicketContent = {
 				if (xhr.status == 200) {
                     // We must call again a get to check if attribute was really changed.
                     var subxhr = new XMLHttpRequest();
-                    subxhr.open("GET", RESSystem.getPref("serverName") + "/issues/" + RESTicketContent.getCurrentTicketID() + ".json?key=" + RESSystem.getPref("apiKey"), false);
-                    subxhr.send(null);
-                    if (subxhr.readyState == 4) {
-                        if (subxhr.status == 200) {
-                            var jsonSubResponse = JSON.parse(subxhr.responseText);
-                            if (id == jsonSubResponse.issue[attributeIssueNode]["id"]) {
-                                RESSystem.basicAlert(RESSystem.getTranslation("res-string-bundle", messageSuccess));
-                                window.close();
-                            }
-                            else {
-                                RESSystem.basicAlert(RESSystem.getTranslation("res-string-bundle", messageError));
+                    subxhr.open("GET", RESSystem.getPref("serverName") + "/issues/" + RESTicketContent.getCurrentTicketID() + ".json?key=" + RESSystem.getPref("apiKey"), true);
+                    subxhr.onreadystatechange = function() {
+                        if (subxhr.readyState == 4) {
+                            if (subxhr.status == 200) {
+                                var jsonSubResponse = JSON.parse(subxhr.responseText);
+                                if (id == jsonSubResponse.issue[attributeIssueNode]["id"]) {
+                                    RESSystem.basicAlert(RESSystem.getTranslation("res-string-bundle", messageSuccess));
+                                    window.close();
+                                }
+                                else {
+                                    RESSystem.basicAlert(RESSystem.getTranslation("res-string-bundle", messageError));
+                                }
                             }
                         }
                     }
+                    subxhr.send(null);
                 }
             }
-            //TODO Errors
         }
         var root = new Object();
 		root.issue = new Object();
@@ -121,4 +124,4 @@ RESTicketContent = {
 
 }
 
-window.addEventListener("load", function () { RESTicketContent.init(true); }, false);
+window.addEventListener("load", function loadRESTicketContentFunction(event) { RESTicketContent.init(true); window.removeEventListener(event, loadRESTicketContentFunction, false); }, false);

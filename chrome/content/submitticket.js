@@ -143,4 +143,5 @@ RESSubmitTicket = {
 	
 }
 
-window.addEventListener("load", function () { RESSubmitTicket.init(); }, false);
+window.addEventListener("load", function loadRESSubmitTicketFunction(event) { RESSubmitTicket.init(true); window.removeEventListener(event, loadRESSubmitTicketFunction, false); }, false);
+

@@ -30,14 +30,14 @@ RESDiscussionsContent = {
         xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4) {
 				if (xhr.status == 200) {
-                    var currentUserAttributes = RESSystem.getCurrentUserAttributes(["id", "firstname", "lastname"]);
-                    RESDiscussionsContent.addNote("currentNotes", currentUserAttributes[0], currentUserAttributes[1] + " " + currentUserAttributes[2], (new Date()).toLocaleFormat('%d-%b-%Y'), message);
-                    // Bottom currentNotes div auto scroll
-                    var objDiv = document.getElementById("currentNotes");
-                    objDiv.scrollTop = objDiv.scrollHeight;
+                    RESSystem.getCurrentUserAttributes(["id", "firstname", "lastname"], function(currentUserAttributes) {
+                        RESDiscussionsContent.addNote("currentNotes", currentUserAttributes[0], currentUserAttributes[1] + " " + currentUserAttributes[2], (new Date()).toLocaleFormat('%d-%b-%Y'), message);
+                        // Bottom currentNotes div auto scroll
+                        var objDiv = document.getElementById("currentNotes");
+                        objDiv.scrollTop = objDiv.scrollHeight;
+                    });
                 }
             }
-            //TODO Errors
         }
         var root = new Object();
 		root.issue = new Object();
@@ -47,32 +47,34 @@ RESDiscussionsContent = {
     
     loadNotes : function() {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", RESSystem.getPref("serverName") + "/issues/" + this.getCurrentTicketID() + ".json?include=journals&key=" + RESSystem.getPref("apiKey"), false);
-        xhr.send(null);
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-                var jsonSubResponse = JSON.parse(xhr.responseText);
-                
-                // Load top sub header data
-                document.getElementById("discussiontitle").value = jsonSubResponse.issue["subject"];
-                var ticketSubTitle = RESSystem.getTranslation("res-string-bundle", "ticket.information.updateon") + " " + new Date(jsonSubResponse.issue["updated_on"]).toLocaleFormat('%d-%b-%Y') + "] ";
-                if (typeof(jsonSubResponse.issue["assigned_to"]) != "undefined") {
-                       ticketSubTitle += " / " + RESSystem.getTranslation("res-string-bundle", "ticket.information.assignedto") + " " + jsonSubResponse.issue["assigned_to"]["name"] + "] ";
-                }
-                document.getElementById("discussionsubtitle").value = ticketSubTitle;
-                document.getElementById("discussionsubsubtitle").value = RESSystem.getTranslation("res-string-bundle", "ticket.information.status") + " : " + jsonSubResponse.issue.status["name"] + " / " + RESSystem.getTranslation("res-string-bundle", "ticket.information.priority") + " : " + jsonSubResponse.issue.priority["name"];
-                var descriptionContentNode = document.createTextNode(jsonSubResponse.issue["description"]);
-                document.getElementById("discussiondescription").appendChild(descriptionContentNode);
-                
-                var allJournals = jsonSubResponse.issue.journals;
-                for (var key in allJournals) {
-                    var note = allJournals[key];
-                    if ( (typeof(note["notes"]) != "undefined") && (note["notes"] != '') ) {
-                        this.addNote("currentNotes", note.user["id"], note.user["name"], new Date(note["created_on"]).toLocaleFormat('%d-%b-%Y'), note["notes"]);
+        xhr.open("GET", RESSystem.getPref("serverName") + "/issues/" + this.getCurrentTicketID() + ".json?include=journals&key=" + RESSystem.getPref("apiKey"), true);
+        xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4) {
+				if (xhr.status == 200) {
+                    var jsonSubResponse = JSON.parse(xhr.responseText);
+
+                    // Load top sub header data
+                    document.getElementById("discussiontitle").value = jsonSubResponse.issue["subject"];
+                    var ticketSubTitle = RESSystem.getTranslation("res-string-bundle", "ticket.information.updateon") + " " + new Date(jsonSubResponse.issue["updated_on"]).toLocaleFormat('%d-%b-%Y') + "] ";
+                    if (typeof(jsonSubResponse.issue["assigned_to"]) != "undefined") {
+                           ticketSubTitle += " / " + RESSystem.getTranslation("res-string-bundle", "ticket.information.assignedto") + " " + jsonSubResponse.issue["assigned_to"]["name"] + "] ";
+                    }
+                    document.getElementById("discussionsubtitle").value = ticketSubTitle;
+                    document.getElementById("discussionsubsubtitle").value = RESSystem.getTranslation("res-string-bundle", "ticket.information.status") + " : " + jsonSubResponse.issue.status["name"] + " / " + RESSystem.getTranslation("res-string-bundle", "ticket.information.priority") + " : " + jsonSubResponse.issue.priority["name"];
+                    var descriptionContentNode = document.createTextNode(jsonSubResponse.issue["description"]);
+                    document.getElementById("discussiondescription").appendChild(descriptionContentNode);
+
+                    var allJournals = jsonSubResponse.issue.journals;
+                    for (var key in allJournals) {
+                        var note = allJournals[key];
+                        if ( (typeof(note["notes"]) != "undefined") && (note["notes"] != '') ) {
+                            RESDiscussionsContent.addNote("currentNotes", note.user["id"], note.user["name"], new Date(note["created_on"]).toLocaleFormat('%d-%b-%Y'), note["notes"]);
+                        }
                     }
                 }
             }
         }
+        xhr.send(null);
     },
     
     addNote : function(parentID, authorId, author, date, message) {
@@ -125,4 +127,4 @@ RESDiscussionsContent = {
 
 }
 
-window.addEventListener("load", function () { RESDiscussionsContent.init(true); }, false);
+window.addEventListener("load", function loadRESDiscussionsContentFunction(event) { RESDiscussionsContent.init(true); window.removeEventListener(event, loadRESDiscussionsContentFunction, false); }, false);

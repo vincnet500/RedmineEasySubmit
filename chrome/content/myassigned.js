@@ -5,12 +5,14 @@ RESAssigned = {
         RESGenericTickets.init(mustCenter, this.getDetailsView);
     },
     
-    findTicket: function(currentUserId, ticket) {
+    findTicket: function(currentUserId, ticket, endCallback) {
         var assignedToNode = ticket["assigned_to"];
         if ( (typeof(assignedToNode) != "undefined") && (assignedToNode["id"] == currentUserId) ) {
-            return ticket;
+            endCallback(ticket);
+            return;
         }
-        return null;
+        endCallback(null);
+        return;
     },
     
     customTicketClassName: function(topPriorities, ticket, currentUserId) {
@@ -26,4 +28,4 @@ RESAssigned = {
     
 }
 
-window.addEventListener("load", function () { RESAssigned.init(true); }, false);
+window.addEventListener("load", function loadRESAssignedFunction(event) { RESAssigned.init(true); window.removeEventListener(event, loadRESAssignedFunction, false); }, false);

@@ -20,8 +20,8 @@ RESGenericTickets = {
             for (var key in allProjects) {
                 localProjectPopup.appendChild(RESSystem.createMenuItem(allProjects[key]["id"], allProjects[key]["name"]));
             }
-            document.getElementById("projectName").parentNode.value = RESSystem.getPref("defaultProjectName");
             RESSystem.showLoading('res-loading', false);
+            document.getElementById("projectName").parentNode.value = RESSystem.getPref("defaultProjectName");
 		});
         
         var listBox = document.getElementById("ticketsTable");
@@ -50,47 +50,52 @@ RESGenericTickets = {
     
     loadTickets : function(findTicketFunction, customTicketClassName) {
         RESSystem.showLoading('res-loading', true);
-        
         RESSystem.cleanListBox("ticketsTable");
         
-        var currentUserId = RESSystem.getCurrentUserAttribute("id");
-        var projectId = RESSystem.getMenuPopupValue("projectName"); 
-        var tickets = this.internalLoadTickets(projectId, currentUserId, findTicketFunction, 0);
-        
-        var topPriorities = RESSystem.getTopPriorities(2);
-        for (var key in tickets) {
-            var ticket = tickets[key];
-            var className = customTicketClassName(topPriorities, ticket, currentUserId);
-            var updatedOnDate = new Date(ticket["updated_on"]).toLocaleFormat('%d-%b-%Y');
-            var subject = ticket["subject"];
-            RESSystem.appendListBox("ticketsTable", className, ["#" + ticket["id"], (subject.length > 75?subject.substring(0, 72) + "...":subject), ticket.status["name"], ticket.priority["name"], ticket.tracker["name"], updatedOnDate]);
-        }
-        
-        RESSystem.showLoading('res-loading', false);
+        RESSystem.getCurrentUserAttribute("id", function(currentUserId) {
+            var projectId = RESSystem.getMenuPopupValue("projectName");
+            RESGenericTickets.internalLoadTickets(projectId, currentUserId, findTicketFunction, 0, [], function(tickets) {
+                RESSystem.getTopPriorities(2, function(topPriorities) {
+                    for (var key in tickets) {
+                        var ticket = tickets[key];
+                        var className = customTicketClassName(topPriorities, ticket, currentUserId);
+                        var updatedOnDate = new Date(ticket["updated_on"]).toLocaleFormat('%d-%b-%Y');
+                        var subject = ticket["subject"];
+                        RESSystem.appendListBox("ticketsTable", className, ["#" + ticket["id"], (subject.length > 60?subject.substring(0, 57) + "...":subject), ticket.status["name"], ticket.priority["name"], ticket.tracker["name"], updatedOnDate]);
+                    }
+
+                    RESSystem.showLoading('res-loading', false);
+                });
+            });
+        });
     },
     
-    internalLoadTickets : function(project, currentUserId, findTicketFunction, offset) {
-        var myTickets = [];
+    internalLoadTickets : function(project, currentUserId, findTicketFunction, offset, myTickets, endCallback) {
         var xhr = new XMLHttpRequest();
-		xhr.open("GET", RESSystem.getPref("serverName") + "/issues.json?key=" + RESSystem.getPref("apiKey") + "&project_id=" + project + "&status_id=open&limit=100&offset=" + offset, false);
-		xhr.send(null);
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-                var jsonResponse = JSON.parse(xhr.responseText);
-                for (var key in jsonResponse.issues) {
-                    var ticket = findTicketFunction(currentUserId, jsonResponse.issues[key]);
-                    if (ticket != null) {
-                        myTickets.push(ticket);
-                    }
-                }
-                var totalCount = jsonResponse["total_count"];
-                if (totalCount > offset + 100) {
-                    // We must call again with next offset
-                    myTickets = myTickets.concat(RESGenericTickets.internalLoadTickets(project, currentUserId, findTicketFunction, offset + 100));
-                }
-            }
-        }
-        return myTickets;   
+		xhr.open("GET", RESSystem.getPref("serverName") + "/issues.json?key=" + RESSystem.getPref("apiKey") + "&project_id=" + project + "&status_id=open&limit=100&offset=" + offset, true);
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4) {
+				if (xhr.status == 200) {
+					var jsonResponse = JSON.parse(xhr.responseText);
+					for (var key in jsonResponse.issues) {
+						findTicketFunction(currentUserId, jsonResponse.issues[key], function(ticket) {
+                            if (ticket != null) {
+                                myTickets.push(ticket);
+                            }
+                        });
+					}
+					var totalCount = jsonResponse["total_count"];
+                    if (totalCount > offset + 100) {
+						// We must call again with next offset
+						RESGenericTickets.internalLoadTickets(project, currentUserId, findTicketFunction, offset + 100, myTickets, endCallback);
+					}
+					else {
+                        endCallback(myTickets);
+					}
+				}
+			}
+		}
+        xhr.send(null);
     }
 
 }

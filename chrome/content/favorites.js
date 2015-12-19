@@ -40,4 +40,4 @@ RESFavorites = {
 
 }
 
-window.addEventListener("load", function () { RESFavorites.init(); }, false);
+window.addEventListener("load", function loadRESFavoritesFunction(event) { RESFavorites.init(true); window.removeEventListener(event, loadRESFavoritesFunction, false); }, false);

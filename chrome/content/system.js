@@ -61,47 +61,50 @@ RESSystem = {
         listBox.appendChild(headNode);
     },
     
-    getProjectName : function(projectId)  {
+    getProjectName : function(projectId, endCallback)  {
         var xhr = new XMLHttpRequest();
-		xhr.open("GET", RESSystem.getPref("serverName") + "/projects/" + projectId + ".json?key=" + RESSystem.getPref("apiKey"), false);
-		xhr.send(null);
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-                var jsonResponse = JSON.parse(xhr.responseText);
-                return jsonResponse.project["identifier"];
-            }
-        }
-        return null;
-    },
-    
-    getCurrentUserAttribute : function(attributeName) {
-        var xhr = new XMLHttpRequest();
-		xhr.open("GET", RESSystem.getPref("serverName") + "/users/current.json?key=" + RESSystem.getPref("apiKey"), false);
-		xhr.send(null);
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-                var jsonResponse = JSON.parse(xhr.responseText);
-                return jsonResponse.user[attributeName];
-            }
-        }
-        return null;
-    },
-    
-    getCurrentUserAttributes : function(attributesNames) {
-        var xhr = new XMLHttpRequest();
-		xhr.open("GET", RESSystem.getPref("serverName") + "/users/current.json?key=" + RESSystem.getPref("apiKey"), false);
-		xhr.send(null);
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-                var result = [];
-                var jsonResponse = JSON.parse(xhr.responseText);
-                for (var key in attributesNames) {
-                    result.push(jsonResponse.user[attributesNames[key]]);
+		xhr.open("GET", RESSystem.getPref("serverName") + "/projects/" + projectId + ".json?key=" + RESSystem.getPref("apiKey"), true);
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4) {
+				if (xhr.status == 200) {
+                    var jsonResponse = JSON.parse(xhr.responseText);
+                    endCallback(jsonResponse.project["identifier"]);
                 }
-                return result;
             }
         }
-        return null;
+        xhr.send(null);
+    },
+    
+    getCurrentUserAttribute : function(attributeName, endCallback) {
+        var xhr = new XMLHttpRequest();
+		xhr.open("GET", RESSystem.getPref("serverName") + "/users/current.json?key=" + RESSystem.getPref("apiKey"), true);
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4) {
+				if (xhr.status == 200) {
+                    var jsonResponse = JSON.parse(xhr.responseText);
+                    endCallback(jsonResponse.user[attributeName]);
+                }
+            }
+        }
+        xhr.send(null);
+    },
+    
+    getCurrentUserAttributes : function(attributesNames, endCallback) {
+        var xhr = new XMLHttpRequest();
+		xhr.open("GET", RESSystem.getPref("serverName") + "/users/current.json?key=" + RESSystem.getPref("apiKey"), true);
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4) {
+				if (xhr.status == 200) {
+                    var result = [];
+                    var jsonResponse = JSON.parse(xhr.responseText);
+                    for (var key in attributesNames) {
+                        result.push(jsonResponse.user[attributesNames[key]]);
+                    }
+                    endCallback(result);
+                }
+            }
+        }
+        xhr.send(null);
     },
     
     testConnection : function(serverName, apiKey, showAlertSuccess) {
@@ -264,26 +267,28 @@ RESSystem = {
 		return stringsBundle.getString(key);
 	},
     
-    getTopPriorities: function(topLimit) {
+    getTopPriorities: function(topLimit, endCallback) {
         var topPriorities = [];
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", RESSystem.getPref("serverName") + "/enumerations/issue_priorities.json?key=" + RESSystem.getPref("apiKey"), false);
-        xhr.send(null);
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-                var jsonResponse = JSON.parse(xhr.responseText);
-                var priorities = jsonResponse["issue_priorities"];
-                var index = 0;
-                for (var key in priorities.reverse()) {
-                    topPriorities.push(priorities[key]["id"]);
-                    index++;
-                    if (index == topLimit) {
-                        break;   
+        xhr.open("GET", RESSystem.getPref("serverName") + "/enumerations/issue_priorities.json?key=" + RESSystem.getPref("apiKey"), true);
+        xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4) {
+				if (xhr.status == 200) {
+                    var jsonResponse = JSON.parse(xhr.responseText);
+                    var priorities = jsonResponse["issue_priorities"];
+                    var index = 0;
+                    for (var key in priorities.reverse()) {
+                        topPriorities.push(priorities[key]["id"]);
+                        index++;
+                        if (index == topLimit) {
+                            break;   
+                        }
                     }
+                    endCallback(topPriorities);
                 }
             }
         }
-        return topPriorities;
+        xhr.send(null);
     },
     
     getCurrentShortLocale : function() {
@@ -298,4 +303,4 @@ RESSystem = {
 	
 }
 
-window.addEventListener("load", function () { RESSystem.init(); }, false);
+window.addEventListener("load", function loadRESSystemFunction(event) { RESSystem.init(true); window.removeEventListener(event, loadRESSystemFunction, false); }, false);

@@ -22,4 +22,4 @@ RESOptions = {
 
 }
 
-window.addEventListener("load", function () { RESOptions.init(); }, false);
+window.addEventListener("load", function loadRESOptionsFunction(event) { RESOptions.init(true); window.removeEventListener(event, loadRESOptionsFunction, false); }, false);

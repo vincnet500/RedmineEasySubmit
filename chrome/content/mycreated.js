@@ -5,11 +5,13 @@ RESCreated = {
         RESGenericTickets.init(mustCenter, this.getDetailsView);
     },
     
-    findTicket: function(currentUserId, ticket) {
+    findTicket: function(currentUserId, ticket, endCallback) {
         if (ticket.author["id"] == currentUserId) {
-            return ticket;
+            endCallback(ticket);
+            return;
         }
-        return null;
+        endCallback(null);
+        return;
     },
     
     customTicketClassName: function(topPriorities, ticket, currentUserId) {
@@ -25,4 +27,4 @@ RESCreated = {
 
 }
 
-window.addEventListener("load", function () { RESCreated.init(true); }, false);
+window.addEventListener("load", function loadRESCreatedFunction(event) { RESCreated.init(true); window.removeEventListener(event, loadRESCreatedFunction, false); }, false);

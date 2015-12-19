@@ -64,4 +64,4 @@ RESScreenshot = {
 
 }
 
-window.addEventListener("load", function () { RESScreenshot.init(true); }, false);
+window.addEventListener("load", function loadRESScreenshotFunction(event) { RESScreenshot.init(true); window.removeEventListener(event, loadRESScreenshotFunction, false); }, false);

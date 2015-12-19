@@ -15,4 +15,4 @@ RESAbout = {
     
 }
 
-window.addEventListener("load", function () { RESAbout.init(true); }, false);
+window.addEventListener("load", function loadRESAboutFunction(event) { RESAbout.init(true); window.removeEventListener(event, loadRESAboutFunction, false); }, false);

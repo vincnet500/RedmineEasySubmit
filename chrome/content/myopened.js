@@ -5,9 +5,9 @@ RESOpened = {
         RESGenericTickets.init(mustCenter, this.getDetailsView);
     },
     
-    findTicket: function(currentUserId, ticket) {
+    findTicket: function(currentUserId, ticket, endCallback) {
         // We return all tickets : we only have "opened" tickets in generic source
-        return ticket;
+        endCallback(ticket);
     },
     
     customTicketClassName: function(topPriorities, ticket, currentUserId) {
@@ -23,4 +23,4 @@ RESOpened = {
 
 }
 
-window.addEventListener("load", function () { RESOpened.init(true); }, false);
+window.addEventListener("load", function loadRESOpenedFunction(event) { RESOpened.init(true); window.removeEventListener(event, loadRESOpenedFunction, false); }, false);

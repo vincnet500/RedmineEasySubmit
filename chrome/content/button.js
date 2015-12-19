@@ -82,7 +82,9 @@ RedmineEasySubmit = {
         if (favoriteTicketCheckboxId) {
             var defaultProject = RESSystem.getPref("defaultProjectName");
             if (defaultProject != '') {
-                window.open(RESSystem.getPref("serverName") + "/projects/" + RESSystem.getProjectName(defaultProject) + "/search?q=" + content);
+                RESSystem.getProjectName(defaultProject, function(projectName) {
+                    window.open(RESSystem.getPref("serverName") + "/projects/" + projectName + "/search?q=" + content);
+                });
             }
             else {
                 RESSystem.basicAlert("No default project found in configuration.");
@@ -95,4 +97,4 @@ RedmineEasySubmit = {
 
 };
 
-window.addEventListener("load", function () { RedmineEasySubmit.init(); }, false);
+window.addEventListener("load", function loadRedmineEasySubmitFunction(event) { RedmineEasySubmit.init(true); window.removeEventListener(event, loadRedmineEasySubmitFunction, false); }, false);
