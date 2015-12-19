@@ -183,7 +183,7 @@ RESSystem = {
         cnvs.width = width;
 		cnvs.height = height;
 		var ctx = cnvs.getContext("2d");
-		ctx.drawWindow(mainWindow.content, 0, 0, mainWindow.innerWidth, mainWindow.innerHeight, "rgb(255,255,255)");
+		ctx.drawWindow(mainWindow, 0, 0, mainWindow.innerWidth, mainWindow.innerHeight, "rgb(255,255,255)");
 		return(cnvs.toDataURL("image/png"));
 	},
 	
